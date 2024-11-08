@@ -1,8 +1,8 @@
 <?php
-// Inclui a conexão com o banco de dados
+
 include 'db_connection.php';
 
-// Função para buscar os pacientes do banco de dados com base na pesquisa
+
 function buscarPacientes($conn, $search = null)
 {
     $query = "SELECT * FROM PICadPacientes";
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
     $pacientes = buscarPacientes($conn);
 }
 
-// Se o código estiver presente na requisição AJAX, retorne JSON
+
 if (isset($_GET['codigo'])) {
     $codigo = $_GET['codigo'];
     $stmt = $conn->prepare("SELECT endereco, numero, cidade, uf, cep FROM PICadPacientes WHERE codigo = ?");
@@ -140,7 +140,7 @@ if (isset($_GET['codigo'])) {
 </head>
 <body>
 
-<!-- Barra de Navegação -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
@@ -235,7 +235,7 @@ if (isset($_GET['codigo'])) {
     </div>
 </div>
 
-<!-- Modal para o Mapa -->
+
 <div id="overlay" onclick="fecharModal()"></div>
 <div id="modal">
     <div id="mapContainer"></div>

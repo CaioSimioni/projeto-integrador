@@ -59,7 +59,7 @@
     </style>
 </head>
 <body>
-<!-- Barra de Navegação -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
@@ -138,7 +138,7 @@
     INNER JOIN PICadPacientes ON PiCadExamesRealizados.codPaciente = PICadPacientes.codigo
     INNER JOIN PICadExames ON PiCadExamesRealizados.codExame = PICadExames.codigo";
 
-                    // Verificar se a pesquisa foi submetida
+
                     if (isset($_POST['busca'])) {
                         $pesq = '%' . $_POST['busca'] . '%';
                         $stmt = $conn->prepare($sql . " WHERE PICadPacientes.nome LIKE ? OR PICadExames.exame LIKE ?");
@@ -188,7 +188,7 @@
         </div>
     </div>
 
-    <!-- Modal de Edição -->
+   
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

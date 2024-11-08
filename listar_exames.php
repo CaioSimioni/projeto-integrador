@@ -71,7 +71,7 @@
 </head>
 <body>
 
-<!-- Barra de Navegação -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
@@ -117,7 +117,7 @@
     </div>
 </nav>
 
-<!-- Formulário de Pesquisa e Tabela -->
+
 <div class="container">
     <div class="box">
         <h1 class="title">Consultar Exames</h1>
@@ -131,7 +131,7 @@
             </div>
         </form>
 
-        <!-- Tabela de Exames -->
+
         <div class="table-container">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -143,13 +143,13 @@
                 </thead>
                 <tbody>
                     <?php
-                    // Conexão com o banco de dados
+
                     require_once 'db_connection.php';
 
-                    // Consulta inicial de exames, abre página com a pesquisa carregada
+
                     $sql = "SELECT * FROM PICadExames";
 
-                    // Verifica se o formulário foi enviado com valores de pesquisa
+
                     if (!empty($_POST['busca'])) {
                         $busca = $_POST['busca'];
                         $sql .= " WHERE exame LIKE '%$busca%'";
@@ -158,7 +158,7 @@
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        // Exibe os dados de cada exame
+
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . $row['codigo'] . "</td>";
@@ -170,7 +170,7 @@
                         echo "<tr><td colspan='3'>Nenhum exame encontrado.</td></tr>";
                     }
 
-                    // Fecha a conexão com o banco de dados
+
                     $conn->close();
                     ?>
                 </tbody>

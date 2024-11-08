@@ -95,7 +95,7 @@ $conn->close();
     </style>
 </head>
 <body>
-<!-- Barra de Navegação -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
@@ -250,7 +250,6 @@ $conn->close();
             </div>
         </div>
 
-        <!-- Seção de Logradouro -->
         <div class="card mb-4">
             <div class="card-header">Logradouro</div>
             <div class="card-body">
@@ -258,92 +257,94 @@ $conn->close();
                     <div class="col-md-6">
                         <label for="unidadeSaude" class="form-label">Unidade de Saúde</label>
                         <input type="text" class="form-control" id="unidadeSaude" name="unidadeSaude"
-                               placeholder="Digite a unidade de saúde" value="<?= htmlspecialchars($paciente['unidadeSaude']) ?>">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="rua" class="form-label">Rua</label>
-                        <input type="text" class="form-control" id="rua" name="endereco" placeholder="Digite a rua" value="<?= htmlspecialchars($paciente['endereco']) ?>">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label for="numeroCasa" class="form-label">Nº da Casa</label>
-                        <input type="text" class="form-control" id="numeroCasa" name="numero"
-                               placeholder="Digite o número da casa" value="<?= htmlspecialchars($paciente['numero']) ?>">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="bairro" class="form-label">Bairro</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite o bairro" value="<?= htmlspecialchars($paciente['bairro']) ?>">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="complemento" class="form-label">Complemento</label>
-                        <input type="text" class="form-control" id="complemento" name="complemento"
-                               placeholder="Digite o complemento" value="<?= htmlspecialchars($paciente['complemento']) ?>">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <label for="uf2" class="form-label">UF</label>
-                        <select id="uf2" name="uf" class="form-select">
-                            <option value="AC" <?= $paciente['uf'] == 'AC' ? 'selected' : '' ?>>AC</option>
-                            <option value="AL" <?= $paciente['uf'] == 'AL' ? 'selected' : '' ?>>AL</option>
-                            <option value="AM" <?= $paciente['uf'] == 'AM' ? 'selected' : '' ?>>AM</option>
-                            <option value="AP" <?= $paciente['uf'] == 'AP' ? 'selected' : '' ?>>AP</option>
-                            <option value="BA" <?= $paciente['uf'] == 'BA' ? 'selected' : '' ?>>BA</option>
-                            <option value="CE" <?= $paciente['uf'] == 'CE' ? 'selected' : '' ?>>CE</option>
-                            <option value="DF" <?= $paciente['uf'] == 'DF' ? 'selected' : '' ?>>DF</option>
-                            <option value="ES" <?= $paciente['uf'] == 'ES' ? 'selected' : '' ?>>ES</option>
-                            <option value="GO" <?= $paciente['uf'] == 'GO' ? 'selected' : '' ?>>GO</option>
-                            <option value="MA" <?= $paciente['uf'] == 'MA' ? 'selected' : '' ?>>MA</option>
-                            <option value="MG" <?= $paciente['uf'] == 'MG' ? 'selected' : '' ?>>MG</option>
-                            <option value="MS" <?= $paciente['uf'] == 'MS' ? 'selected' : '' ?>>MS</option>
-                            <option value="MT" <?= $paciente['uf'] == 'MT' ? 'selected' : '' ?>>MT</option>
-                            <option value="PA" <?= $paciente['uf'] == 'PA' ? 'selected' : '' ?>>PA</option>
-                            <option value="PB" <?= $paciente['uf'] == 'PB' ? 'selected' : '' ?>>PB</option>
-                            <option value="PE" <?= $paciente['uf'] == 'PE' ? 'selected' : '' ?>>PE</option>
-                            <option value="PI" <?= $paciente['uf'] == 'PI' ? 'selected' : '' ?>>PI</option>
-                            <option value="PR" <?= $paciente['uf'] == 'PR' ? 'selected' : '' ?>>PR</option>
-                            <option value="RJ" <?= $paciente['uf'] == 'RJ' ? 'selected' : '' ?>>RJ</option>
-                            <option value="RN" <?= $paciente['uf'] == 'RN' ? 'selected' : '' ?>>RN</option>
-                            <option value="RO" <?= $paciente['uf'] == 'RO' ? 'selected' : '' ?>>RO</option>
-                            <option value="RR" <?= $paciente['uf'] == 'RR' ? 'selected' : '' ?>>RR</option>
-                            <option value="RS" <?= $paciente['uf'] == 'RS' ? 'selected' : '' ?>>RS</option>
-                            <option value="SC" <?= $paciente['uf'] == 'SC' ? 'selected' : '' ?>>SC</option>
-                            <option value="SE" <?= $paciente['uf'] == 'SE' ? 'selected' : '' ?>>SE</option>
-                            <option value="SP" <?= $paciente['uf'] == 'SP' ? 'selected' : '' ?>>SP</option>
-                            <option value="TO" <?= $paciente['uf'] == 'TO' ? 'selected' : '' ?>>TO</option>
-                        </select>
+                               placeholder="Digite a unidade de saúde">
                     </div>
                     <div class="col-md-4">
                         <label for="cep" class="form-label">CEP</label>
-                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o CEP" value="<?= htmlspecialchars($paciente['cep']) ?>">
+                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o CEP">
                     </div>
                     <div class="col-md-4">
-                        <label for="cidade" class="form-label">Cidade</label>
-                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite a Cidade" value="<?= htmlspecialchars($paciente['cidade']) ?>">
+                        <label for="rua" class="form-label">Rua</label>
+                        <input type="text" class="form-control" id="rua" name="endereco" placeholder="Digite a rua" readonly>
                     </div>
+                    <div class="col-md-4">
+                        <label for="numeroCasa" class="form-label">Nº da Casa</label>
+                        <input type="text" class="form-control" id="numeroCasa" name="numero"
+                               placeholder="Digite o número da casa">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="bairro" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite o bairro" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="complemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="complemento" name="complemento"
+                               placeholder="Digite o complemento">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="uf2" class="form-label">UF</label>
+                        <select id="uf2" name="uf" class="form-select">
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AM">AM</option>
+                            <option value="AP">AP</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MG">MG</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="PR">PR</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="RS">RS</option>
+                            <option value="SC">SC</option>
+                            <option value="SE">SE</option>
+                            <option value="SP" selected>SP</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite a Cidade" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label for="referencia" class="form-label">Referência</label>
                         <input type="text" class="form-control" id="referencia" name="referencia"
-                               placeholder="Digite uma referência" value="<?= htmlspecialchars($paciente['referencia']) ?>">
+                               placeholder="Digite uma referência">
                     </div>
                     <div class="col-md-4">
                         <label for="telefone" class="form-label">Telefone</label>
                         <input type="text" class="form-control" id="telefone" name="telefone"
-                               placeholder="Digite o telefone" value="<?= htmlspecialchars($paciente['telefone']) ?>">
+                               placeholder="Digite o telefone">
                     </div>
                     <div class="col-md-4">
                         <label for="celular" class="form-label">Celular</label>
                         <input type="text" class="form-control" id="celular" name="celular"
-                               placeholder="Digite o celular" value="<?= htmlspecialchars($paciente['celular']) ?>">
+                               placeholder="Digite o celular">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Botões de Ação -->
+
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-primary mx-2">Cadastrar</button>
             <button type="reset" class="btn btn-secondary mx-2">Cancelar</button>
@@ -351,22 +352,41 @@ $conn->close();
     </form>
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-<!-- Aplicando máscara -->
+
 <script>
     $(document).ready(function () {
         $('#cpf').mask('000.000.000-00');
         $('#numSUS').mask('000000000000000');
-        $('#numPront').mask('000000')
+        $('#numPront').mask('000000');
         $('#cep').mask('00000-000');
         $('#telefone').mask('(00) 0000-0000');
         $('#celular').mask('(00) 0 0000-0000');
+
+
+        $('#cep').on('blur', function () {
+            let cep = $(this).val().replace('-', '');
+            if (cep.length === 8) {
+                $.getJSON(`https://viacep.com.br/ws/${cep}/json/`, function (data) {
+                    if (!("erro" in data)) {
+                        $('#rua').val(data.logradouro);
+                        $('#bairro').val(data.bairro);
+                        $('#uf2').val(data.uf);
+                        $('#cidade').val(data.localidade);
+                    } else {
+                        alert("CEP não encontrado.");
+                    }
+                }).fail(function () {
+                    alert("Erro ao consultar o CEP.");
+                });
+            } else {
+                alert("CEP inválido.");
+            }
+        });
     });
 </script>
-
-</body>
-</html>
 

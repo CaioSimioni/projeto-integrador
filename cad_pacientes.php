@@ -1,7 +1,7 @@
 <?php
 require_once 'db_connection.php';
 
-// Verifica se o formulário foi enviado
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $dataNasc = $_POST['dataNasc'];
