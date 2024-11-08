@@ -75,7 +75,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
-            <div class="navbar-brand"><a href="inicio.html">Sistema</a></div>
+            <a class="navbar-brand" href="inicio.html">Sistema de Gestão Hospitalar</a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -104,14 +104,12 @@
                             Regulação
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="exames_pacientes.php">Vincular Exames a Pacientes</a></li>
+                            <li><a class="dropdown-item" href="exames_pacientes.php">Vincular Exames a Pacientes</a>
+                            </li>
                             <li><a class="dropdown-item" href="status_exames.php">Status de Exames Relizados</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <div>
-                <button class="btn btn-outline-light" type="button">Sair</button>
             </div>
         </div>
     </div>
@@ -127,7 +125,9 @@
             </div>
             <div class="col-md-4 btn-group">
                 <button type="submit" class="btn btn-primary">Buscar</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href=window.location.href">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href=window.location.href">
+                    Cancelar
+                </button>
             </div>
         </form>
 
@@ -135,44 +135,44 @@
         <div class="table-container">
             <table class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Exame</th>
-                        <th scope="col">Ações</th>
-                    </tr>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Ações</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <?php
+                <?php
 
-                    require_once 'db_connection.php';
-
-
-                    $sql = "SELECT * FROM PICadExames";
+                require_once 'db_connection.php';
 
 
-                    if (!empty($_POST['busca'])) {
-                        $busca = $_POST['busca'];
-                        $sql .= " WHERE exame LIKE '%$busca%'";
+                $sql = "SELECT * FROM PICadExames";
+
+
+                if (!empty($_POST['busca'])) {
+                    $busca = $_POST['busca'];
+                    $sql .= " WHERE exame LIKE '%$busca%'";
+                }
+
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['codigo'] . "</td>";
+                        echo "<td>" . $row['exame'] . "</td>";
+                        echo "<td><a href='alterar_exame.php?codigo=" . $row['codigo'] . "' class='btn btn-primary btn-sm'>Editar</a> <a href='excluir_exame.php?codigo=" . $row['codigo'] . "' class='btn btn-danger btn-sm'>Excluir</a></td>";
+                        echo "</tr>";
                     }
-
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row['codigo'] . "</td>";
-                            echo "<td>" . $row['exame'] . "</td>";
-                            echo "<td><a href='alterar_exame.php?codigo=" . $row['codigo'] . "' class='btn btn-primary btn-sm'>Editar</a> <a href='excluir_exame.php?codigo=" . $row['codigo'] . "' class='btn btn-danger btn-sm'>Excluir</a></td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='3'>Nenhum exame encontrado.</td></tr>";
-                    }
+                } else {
+                    echo "<tr><td colspan='3'>Nenhum exame encontrado.</td></tr>";
+                }
 
 
-                    $conn->close();
-                    ?>
+                $conn->close();
+                ?>
                 </tbody>
             </table>
         </div>

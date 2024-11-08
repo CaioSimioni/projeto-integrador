@@ -144,7 +144,7 @@ if (isset($_GET['codigo'])) {
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
-            <div class="navbar-brand"><a href="inicio.html">Sistema</a></div>
+            <a class="navbar-brand" href="inicio.html">Sistema de Gestão Hospitalar</a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
@@ -173,14 +173,12 @@ if (isset($_GET['codigo'])) {
                             Regulação
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="exames_pacientes.php">Vincular Exames a Pacientes</a></li>
+                            <li><a class="dropdown-item" href="exames_pacientes.php">Vincular Exames a Pacientes</a>
+                            </li>
                             <li><a class="dropdown-item" href="status_exames.php">Status de Exames Relizados</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
-            <div>
-                <button class="btn btn-outline-light" type="button">Sair</button>
             </div>
         </div>
     </div>
