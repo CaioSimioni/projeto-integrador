@@ -144,7 +144,7 @@ if (isset($_GET['codigo'])) {
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
-            <div class="navbar-brand"> Sistema</div>
+            <div class="navbar-brand"><a href="inicio.html">Sistema</a></div>
             <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown">

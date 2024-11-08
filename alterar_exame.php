@@ -102,7 +102,6 @@ $conn->close();
 </head>
 <body>
 
-<!-- Barra de Navegação -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="d-flex justify-content-between w-100">
