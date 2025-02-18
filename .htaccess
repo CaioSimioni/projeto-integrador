@@ -1,0 +1,8 @@
+# Impede a listagem de diretórios
+Options -Indexes
+
+# Ativa o RewriteEngine
+RewriteEngine On
+
+# Redireciona erros 404 para a página personalizada
+ErrorDocument 404 /src/pages/Page404.php
