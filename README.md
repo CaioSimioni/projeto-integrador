@@ -17,7 +17,6 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
     ```.env
     # App
     APP_NAME=
-    APP_URL=
     APP_PORT=
 
     # Mysql
