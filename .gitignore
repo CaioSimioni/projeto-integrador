@@ -1,0 +1,6 @@
+# Ignorar arquivo de configuração de variaveis de ambiente
+.env
+
+legado/
+
+db_data/
