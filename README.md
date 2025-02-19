@@ -38,8 +38,9 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+This project is licensed under the [MIT LICENSE](../LICENSE).
 
 ## Contribuidores
 
-[![CaioSimioni](https://avatars.githubusercontent.com/u/83130766?v=4&s=50)](https://github.com/CaioSimioni "CaioSimioni")
+| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) |
+| :---: | :---: |
