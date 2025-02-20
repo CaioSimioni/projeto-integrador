@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     git \
     php \
+    php-mysql \
     net-tools \
     && rm -rf /var/lib/apt/lists/*
 
