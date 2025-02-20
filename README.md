@@ -18,12 +18,14 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
     # App
     APP_NAME=
     APP_PORT=
-
+    
     # Mysql
-    MYSQL_ROOT_PASSWORD=
-    MYSQL_DATABASE=
-    MYSQL_USER=
-    MYSQL_PASSWORD=
+    DB_ROOT_PASSWORD=
+    DB_HOST=
+    DB_DRIVER=
+    DB_DATABASE=
+    DB_USER=
+    DB_PASSWORD=
     ```
 
 2. Execute o comando para iniciar os serviços com Docker:
@@ -34,13 +36,15 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
 
 ## Contribuir
 
-(em breve)
+Para contribuir no projeto é necessário `clonar` o repositório, fazer `pull` da branch `main` para garantir que sempre está na última versão do projeto, criar uma `Branch` dev com seu nome `dev-fulano`, fazer o que precisar nessa branch de desenvolvimento e quanto terminar abrir um Pull Request de `main` <- `dev-fulano`.
 
-## License
+> Incompleto - criar um tutorial visual de como contribuir no projeto
+
+## Licença
 
 This project is licensed under the [MIT LICENSE](../LICENSE).
 
 ## Contribuidores
 
-| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) |
-| :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) | [<img src="https://avatars.githubusercontent.com/u/146387290?v=4" width=115><br><sub>Lucas Henrique Dias Castro</sub>](https://github.com/lucashdc) |
+| :---: | :---: | :---: |
