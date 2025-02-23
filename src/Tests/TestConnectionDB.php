@@ -1,9 +1,9 @@
 <?php
 // src/Tests/TestConnectionDB.php
 
-namespace Dev\CaioSimioni\ProjetoSaude\Tests;
+namespace Dev\ProjetoIntegrador\Tests;
 
-use Dev\CaioSimioni\ProjetoSaude\Config\Env;
+use Dev\ProjetoIntegrador\Config\Env;
 
 require_once __DIR__ . '/../../autoload.php';
 
