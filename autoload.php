@@ -1,4 +1,6 @@
 <?php
+// ProjetoIntegrador/autoload.php
+
 /**
  * Autoload de classes para o projeto.
  *
@@ -14,7 +16,7 @@
 
 spl_autoload_register(function (string $nomeCompletoClasse) {
 
-    $caminhoArquivo = str_replace('Dev\\CaioSimioni\\ProjetoSaude', 'src', $nomeCompletoClasse);
+    $caminhoArquivo = str_replace('Dev\\ProjetoIntegrador', 'src', $nomeCompletoClasse);
     $caminhoArquivo = str_replace('\\', DIRECTORY_SEPARATOR, $caminhoArquivo);
     $caminhoArquivo .= '.php';
 

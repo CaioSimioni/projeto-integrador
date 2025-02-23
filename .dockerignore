@@ -1,3 +1,18 @@
+# Ignorar diretórios de legado e dados do banco de dados
 legado/
-
 db_data/
+
+# Ignorar arquivos de configuração do Docker
+.dockerignore
+Dockerfile
+docker-compose.yaml
+
+# Ignorar arquivos de configuração de editor
+.editorconfig
+
+# Ignorar arquivos e diretórios do Git
+.gitignore
+.git/
+
+# Ignorar arquivos de exemplo de variáveis de ambiente
+.env.example

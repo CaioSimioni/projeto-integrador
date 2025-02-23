@@ -1,7 +1,11 @@
 <?php
-// src/Model/Page.php
+// src/Pages/Page.php
 
-namespace Dev\CaioSimioni\ProjetoSaude\Model;
+namespace Dev\ProjetoIntegrador\Pages;
+
+use Dev\ProjetoIntegrador\Config\Env;
+
+require_once __DIR__ . '/../../autoload.php';
 
 /**
  * Classe Page
@@ -9,14 +13,14 @@ namespace Dev\CaioSimioni\ProjetoSaude\Model;
  * Esta classe abstrata representa a estrutura básica de uma página web com um cabeçalho, conteúdo e rodapé.
  * Ela fornece métodos para renderizar o cabeçalho e o rodapé, e exige que as subclasses implementem o método renderContent.
  *
- * @package Model
+ * @package Pages
  */
 abstract class Page
 {
     /**
      * @var string $title O título da página web.
      */
-    protected string $title = "ProjetoSaude";
+    protected string $title;
 
     /**
      * Construtor da página.
@@ -41,18 +45,23 @@ abstract class Page
      */
     protected function renderHeader(): void
     {
-        echo '<!DOCTYPE html>
+        ?>
+        <!DOCTYPE html>
         <html lang="pt-BR">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>' . $this->title . '</title>
-            <style>
-                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-                .container { max-width: 600px; margin: auto; }
-            </style>
+            <title><?php echo $this->title ?></title>
+            <link rel="shortcut icon" href="<?php echo Env::get('APP_URL')['APP_URL'] . '/public/favicon.ico' ?>"
+                type="image/x-icon">
+            <link rel="stylesheet" href="<?php echo Env::get('APP_URL')['APP_URL'] . '/public/css/style.css' ?>"
+                type="text/css">
+            <link rel="stylesheet" href="<?php echo $this->cssLink(); ?>" type="text/css">
         </head>
-        <body>';
+
+        <body>
+            <?php
     }
 
     /**
@@ -75,4 +84,13 @@ abstract class Page
      * @return void
      */
     abstract protected function renderContent(): void;
+
+    /**
+     * Retorna o link para o arquivo CSS da página.
+     *
+     * Este método deve ser implementado pelas subclasses para fornecer o link para o arquivo CSS específico da página.
+     *
+     * @return string O link para o arquivo CSS da página.
+     */
+    abstract protected function cssLink(): string;
 }

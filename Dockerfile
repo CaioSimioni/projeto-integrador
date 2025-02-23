@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copia todos os arquivos do diretório atual para o diretório /data no contêiner
-COPY . /data
+COPY . /var/www/app
 
-WORKDIR /data
+WORKDIR /var/www/app
 
 # Expõe a porta padrão do HTTP
 EXPOSE 80
 
 # Define o comando padrão para iniciar o servidor PHP embutido
-CMD [ "php", "-S", "0.0.0.0:8080", "./router.php" ]
+CMD [ "php", "-S", "0.0.0.0:8080", "./server.php" ]
