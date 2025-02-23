@@ -15,11 +15,12 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
 1. Configure o arquivo `.env` com as variáveis de ambiente necessárias:
 
     ```.env
-    # App
+   # App
     APP_NAME=
     APP_PORT=
+    APP_URL=
     
-    # Mysql
+    # Database
     DB_ROOT_PASSWORD=
     DB_HOST=
     DB_DRIVER=
