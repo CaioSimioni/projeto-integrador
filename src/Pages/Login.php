@@ -25,18 +25,7 @@ class Login extends Page
     protected function renderContent(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usuario = $_POST['usuario'];
-            $senha = $_POST['senha'];
-            $authenticator = new Authenticator();
-            if ($authenticator->authenticate($usuario, $senha)) {
-                session_start();
-                $_SESSION['authenticated'] = true;
-                header('Location: dashboard');
-                exit();
-            } else {
-                echo "Usuário ou senha inválidos.";
-                return;
-            }
+            $this->processLoginForm();
         }
         ?>
         <div class="login-container">
@@ -55,6 +44,23 @@ class Login extends Page
             </form>
         </div>
         <?php
+    }
+
+    private function processLoginForm(): void
+    {
+        $usuario = $_POST['usuario'];
+        $senha = $_POST['senha'];
+        $authenticator = new Authenticator();
+        
+        if ($authenticator->authenticate($usuario, $senha)) {
+            session_start();
+            $_SESSION['authenticated'] = true;
+            header('Location: dashboard');
+            exit();
+        } else {
+            echo "Usuário ou senha inválidos.";
+            return;
+        }
     }
 
     protected function cssLink(): string
