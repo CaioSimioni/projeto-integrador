@@ -47,5 +47,5 @@ This project is licensed under the [MIT LICENSE](../LICENSE).
 
 ## Contribuidores
 
-| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) | [<img src="https://avatars.githubusercontent.com/u/146387290?v=4" width=115><br><sub>Lucas Henrique Dias Castro</sub>](https://github.com/lucashdc) |
-| :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) | [<img src="https://avatars.githubusercontent.com/u/146387290?v=4" width=115><br><sub>Lucas Henrique Dias Castro</sub>](https://github.com/lucashdc) | [<img src="https://avatars.githubusercontent.com/u/200537143?v=4" width=115><br><sub>Pedro Iago Victorio Das Dores</sub>](https://github.com/PEDROIAGOP5) |
+| :---: | :---: | :---: | :---: |
