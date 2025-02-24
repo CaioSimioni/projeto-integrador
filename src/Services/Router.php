@@ -4,15 +4,20 @@ namespace Dev\ProjetoIntegrador\Services;
 use Dev\ProjetoIntegrador\Pages\Login;
 use Dev\ProjetoIntegrador\Pages\Page404;
 use Dev\ProjetoIntegrador\Pages\Dashboard;
+use Dev\ProjetoIntegrador\Services\Authenticator;
 
 require_once __DIR__ . '/../../autoload.php';
 
 class Router
 {
-    private array $routes = [
+    private array $pageRoutes = [
         '/' => Login::class,
         '/login' => Login::class,
         '/dashboard' => Dashboard::class,
+    ];
+
+    private array $functionRoutes = [
+        '/logout' => 'logout'
     ];
 
     public function handleRequest(string $requestUri): void
@@ -28,16 +33,27 @@ class Router
             }
         }
 
-        if (array_key_exists($requestUri, $this->routes)) {
-            $class = $this->routes[$requestUri];
+        if (array_key_exists($requestUri, $this->pageRoutes)) {
+            $class = $this->pageRoutes[$requestUri];
             if (class_exists($class)) {
                 new $class();
             } else {
                 new Page404();
             }
+        } elseif (array_key_exists($requestUri, $this->functionRoutes)) {
+            $function = $this->functionRoutes[$requestUri];
+            $this->$function();
         } else {
             new Page404();
         }
+    }
+
+    private function logout(): void
+    {
+        $authenticator = new Authenticator();
+        $authenticator->logout();
+        header('Location: /login');
+        exit();
     }
 
     private function servePublicFile(string $filePath): void

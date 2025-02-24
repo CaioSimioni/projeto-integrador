@@ -17,6 +17,13 @@ class Authenticator
         return password_verify($password, $user['password']);
     }
 
+    public function logout(): void
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+    }
+
     private function getUser(string $username): ?array
     {
         $database = new Database();

@@ -24,8 +24,43 @@ class Dashboard extends Page
     protected function renderContent(): void
     {
         echo <<<HTML
-        <h1>Dashboard</h1>
-        <p>Welcome to the dashboard!</p>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0" />
+        <menu id="menu">
+            <nav>
+
+                <a href="">
+                    <span class="material-symbols-rounded">
+                    dashboard
+                    </span>
+                    <p>Dashboard</p>
+                </a>
+                <a href="">
+                    <span class="material-symbols-rounded">
+                    clinical_notes
+                    </span>
+                    <p>Consultas</p>
+                </a>
+                <a href="">
+                    <span class="material-symbols-rounded">
+                    assignment
+                    </span>
+                    <p>Prontuarios</p>
+                </a>
+                <a href="">
+                    <span class="material-symbols-rounded">
+                    shield_person
+                    </span>
+                    <p>Painel Admin</p>
+                </a>
+                <a href="/logout">
+                    <span class="material-symbols-rounded">
+                    logout
+                    </span>
+                    <p>Logout</p>
+                </a>
+
+            </nav>
+        </menu>
         HTML;
     }
 
