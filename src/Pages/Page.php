@@ -3,8 +3,6 @@
 
 namespace Dev\ProjetoIntegrador\Pages;
 
-use Dev\ProjetoIntegrador\Config\Env;
-
 require_once __DIR__ . '/../../autoload.php';
 
 /**
@@ -53,11 +51,10 @@ abstract class Page
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title><?php echo $this->title ?></title>
-            <link rel="shortcut icon" href="<?php echo Env::get('APP_URL')['APP_URL'] . '/public/favicon.ico' ?>"
-                type="image/x-icon">
-            <link rel="stylesheet" href="<?php echo Env::get('APP_URL')['APP_URL'] . '/public/css/style.css' ?>"
-                type="text/css">
+            <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+            <link rel="stylesheet" href="/public/css/style.css" type="text/css">
             <link rel="stylesheet" href="<?php echo $this->cssLink(); ?>" type="text/css">
+            <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         </head>
 
         <body>

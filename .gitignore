@@ -1,6 +1,11 @@
 # Ignorar arquivo de configuração de variaveis de ambiente
 .env
 
+# Ignorar diretório de arquivos legados
 legado/
 
+# Ignorar dados do banco de dados
 db_data/
+
+# Ignorar arquivo de log de migração
+migration.log
