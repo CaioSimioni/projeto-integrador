@@ -1,4 +1,5 @@
 <?php
+// src/Config/Database.php
 
 namespace Dev\ProjetoIntegrador\Config;
 
@@ -8,15 +9,50 @@ use PDOException;
 
 require_once __DIR__ . '/../../autoload.php';
 
+/**
+ * Classe Database
+ *
+ * Responsável por gerenciar a conexão com o banco de dados.
+ *
+ * @package Config
+ */
 class Database
 {
+    /**
+     * @var string $host O host do banco de dados.
+     */
     private $host = '';
+
+    /**
+     * @var string $name O nome do banco de dados.
+     */
     private $name = '';
+
+    /**
+     * @var string $driver O driver do banco de dados.
+     */
     private $driver = '';
+
+    /**
+     * @var string $user O usuário do banco de dados.
+     */
     private $user = '';
+
+    /**
+     * @var string $pass A senha do banco de dados.
+     */
     private $pass = '';
+
+    /**
+     * @var PDO $conn A conexão com o banco de dados.
+     */
     private $conn;
 
+    /**
+     * Construtor da classe Database.
+     *
+     * Inicializa os valores de conexão com o banco de dados a partir do arquivo de ambiente.
+     */
     public function __construct()
     {
         $env = new Env();
@@ -28,6 +64,12 @@ class Database
         $this->pass = $dbValues['DB_PASSWORD'];
     }
 
+    /**
+     * Obtém a conexão com o banco de dados.
+     *
+     * @return PDO A conexão com o banco de dados.
+     * @throws \Exception Se ocorrer um erro ao conectar ao banco de dados.
+     */
     public function getConnection()
     {
         $this->conn = null;

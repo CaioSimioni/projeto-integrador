@@ -8,7 +8,6 @@
  * com base na URL solicitada.
  *
  * @package Dev\ProjetoIntegrador
- * @author Caio Simioni
  */
 
 use Dev\ProjetoIntegrador\Services\Router;

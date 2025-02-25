@@ -16,3 +16,6 @@ docker-compose.yaml
 
 # Ignorar arquivos de exemplo de variáveis de ambiente
 .env.example
+
+# Ignorar o arquivo de inicialização do banco de dados
+init.sql
