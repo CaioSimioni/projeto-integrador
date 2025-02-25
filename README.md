@@ -83,7 +83,7 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
 
 ## Contribuir
 
-Para mais detalhes sobre como contribuir, consulte o [guia de contribuição](./CONTRIBUING.md).
+Para mais detalhes sobre como contribuir, consulte o [guia de contribuição](./CONTRIBUTING.md).
 
 ## Licença
 
