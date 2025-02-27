@@ -71,12 +71,6 @@ class Dashboard extends Page
                     </span>
                     <p>Painel Admin</p>
                 </a>
-                <a href="">
-                    <span class="material-symbols-rounded">
-                    shield_person
-                    </span>
-                    <p>Teste</p>
-                </a>
             </nav>
             <a id="logout" href="/logout">
                 <span class="material-symbols-rounded">
