@@ -85,6 +85,8 @@ Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
 
 Para mais detalhes sobre como contribuir, consulte o [guia de contribuição](./CONTRIBUTING.md).
 
+Vídeo ensinando a contribuir para o projeto: [Como contribuir para o projeto integrador](https://youtu.be/qOvohOSjMp4?si=kSjac_U-bX2DvoPZ).
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT LICENSE](./LICENSE).
