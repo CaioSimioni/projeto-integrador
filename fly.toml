@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for projeto-integrador-xuynfw on 2025-03-06T22:07:34Z
+# fly.toml app configuration file generated for projeto-integrador-fexrug on 2025-03-06T23:25:20Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'projeto-integrador-xuynfw'
+app = 'projeto-integrador-fexrug'
 primary_region = 'gru'
 
 [build]
