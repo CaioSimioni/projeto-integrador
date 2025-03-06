@@ -29,4 +29,4 @@ WORKDIR /var/www/app
 EXPOSE 80
 
 # Define o comando padrão para iniciar o servidor PHP embutido
-CMD [ "php", "-S", "0.0.0.0:8080", "./server.php" ]
+CMD [ "php", "-S", "0.0.0.0:80", "./server.php" ]

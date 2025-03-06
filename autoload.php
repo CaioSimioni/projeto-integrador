@@ -14,13 +14,26 @@
  * @return void
  */
 
+function namespaceToPath(string $namespace, array $mappings): string {
+    foreach ($mappings as $prefix => $baseDir) {
+        if (strpos($namespace, $prefix) === 0) {
+            $relativeClass = substr($namespace, strlen($prefix));
+            $relativeClass = str_replace('\\', DIRECTORY_SEPARATOR, $relativeClass);
+            return $baseDir . DIRECTORY_SEPARATOR . $relativeClass . '.php';
+        }
+    }
+    return '';
+}
+
 spl_autoload_register(function (string $nomeCompletoClasse) {
+    $mappings = [
+        'Dev\\ProjetoIntegrador\\Test' => 'test',
+        'Dev\\ProjetoIntegrador' => 'src'
+    ];
 
-    $caminhoArquivo = str_replace('Dev\\ProjetoIntegrador', 'src', $nomeCompletoClasse);
-    $caminhoArquivo = str_replace('\\', DIRECTORY_SEPARATOR, $caminhoArquivo);
-    $caminhoArquivo .= '.php';
+    $caminhoArquivo = namespaceToPath($nomeCompletoClasse, $mappings);
 
-    if (file_exists($caminhoArquivo)) {
+    if ($caminhoArquivo && file_exists($caminhoArquivo)) {
         require_once($caminhoArquivo);
     }
 });
