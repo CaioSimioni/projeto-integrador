@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for projeto-integrador-fexrug on 2025-03-06T23:25:20Z
+# fly.toml app configuration file generated for pi-gestao-hospitalar on 2025-03-10T18:55:35Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'projeto-integrador-fexrug'
+app = 'pi-gestao-hospitalar'
 primary_region = 'gru'
 
 [build]
