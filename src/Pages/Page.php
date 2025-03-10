@@ -21,6 +21,11 @@ abstract class Page
     protected string $title;
 
     /**
+     * @var array $linksHead Os links a serem adicionados ao cabeçalho.
+     */
+    protected array $linksHead = [];
+
+    /**
      * Construtor da página.
      *
      * Inicializa a página renderizando o cabeçalho, conteúdo e rodapé.
@@ -43,22 +48,38 @@ abstract class Page
      */
     protected function renderHeader(): void
     {
-        ?>
-        <!DOCTYPE html>
+        echo '<!DOCTYPE html>
         <html lang="pt-BR">
-
         <head>
             <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?php echo $this->title ?></title>
-            <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">';
+            echo '<title>' . $this->title . '</title>';
+            echo '<link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
             <link rel="stylesheet" href="/public/css/style.css" type="text/css">
-            <link rel="stylesheet" href="<?php echo $this->cssLink(); ?>" type="text/css">
-            <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+            <link rel="stylesheet" href="' . $this->cssLink() . '" type="text/css">';
+            echo $this->addLinksHead();
+            echo '<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+            <script src="https://kit.fontawesome.com/5fa94fcf2f.js" crossorigin="anonymous"></script>
         </head>
+        <body>';
+    }
 
-        <body>
-            <?php
+    /**
+     * Adiciona elementos de link ao cabeçalho.
+     *
+     * Este método usa a propriedade $linksHead para adicionar os links ao cabeçalho.
+     *
+     * @return string Retorna uma string contendo os elementos <link> concatenados com uma quebra de linha.
+     */
+    protected function addLinksHead(): string
+    {
+        $output = '';
+        foreach ($this->linksHead as $element) {
+            if (is_string($element) && stripos($element, '<link') !== false) {
+                $output .= $element . PHP_EOL;
+            }
+        }
+        return $output;
     }
 
     /**
@@ -70,7 +91,8 @@ abstract class Page
      */
     protected function renderFooter(): void
     {
-        echo '</body></html>';
+        echo '<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script></body></html>';
     }
 
     /**

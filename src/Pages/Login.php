@@ -20,7 +20,7 @@ class Login extends Page
     /**
      * @var string $title O título da página de login.
      */
-    protected string $title = "Login | Projeto Saúde";
+    protected string $title = "Login | Sistema Gestão Hospitalar";
 
     /**
      * Construtor da classe Login.
@@ -54,7 +54,7 @@ class Login extends Page
             <div class="login-logo">
                 <img src="/public/images/logo_circle.png" alt="Logo">
             </div>
-            <div class="login-title">Bem-vindo ao Sistema</div>
+            <div class="login-title">Sistema Gestão Hospitalar</div>
             <form action="" method="post">
                 <div class="mb-3">
                     <input type="text" class="form-control" placeholder="Usuário" name="usuario" required>
