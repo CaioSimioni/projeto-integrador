@@ -81,9 +81,6 @@ class Database
         } catch (PDOException $exception) {
             error_log("Connection error: " . $exception->getMessage());
             error_log("SQLSTATE: " . $exception->getCode());
-            error_log("Host: " . $this->host);
-            error_log("Database: " . $this->name);
-            error_log("User: " . $this->user);
             throw new \Exception("Database connection error: " . $exception->getMessage());
         }
 
