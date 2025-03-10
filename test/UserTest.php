@@ -3,7 +3,6 @@
 namespace Dev\ProjetoIntegrador\Test;
 
 use Dev\ProjetoIntegrador\Model\User;
-
 use InvalidArgumentException;
 
 require_once __DIR__ . '/../autoload.php';

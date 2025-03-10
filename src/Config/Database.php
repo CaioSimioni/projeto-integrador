@@ -80,7 +80,8 @@ class Database
             $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (PDOException $exception) {
             error_log("Connection error: " . $exception->getMessage());
-            throw new \Exception("Database connection error");
+            error_log("SQLSTATE: " . $exception->getCode());
+            throw new \Exception("Database connection error: " . $exception->getMessage());
         }
 
         return $this->conn;
