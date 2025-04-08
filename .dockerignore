@@ -1,21 +1,28 @@
-# Ignorar diretórios de legado e dados do banco de dados
-legado/
-db_data/
+# Laravel specific files
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+.env
 
-# Ignorar arquivos de configuração do Docker
-.dockerignore
-Dockerfile
-docker-compose.yaml
+# SQLite database
+*.sqlite
+*.sqlite3
 
-# Ignorar arquivos de configuração de editor
-.editorconfig
+# Logs and temporary files
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
 
-# Ignorar arquivos e diretórios do Git
-.gitignore
-.git/
+# IDE and system files
+.idea
+.vscode
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
 
-# Ignorar arquivos de exemplo de variáveis de ambiente
-.env.example
-
-# Ignorar o arquivo de inicialização do banco de dados
-init.sql
+# Antigo Projeto
+.legado
