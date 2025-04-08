@@ -1,97 +1,151 @@
-# Projeto Saude
+# Sistema de Gestão Hospitalar Open Source
 
-<img src="./public/images/login_page.png">
+Um sistema de gestão hospitalar open-source criado para otimizar as operações hospitalares. Este sistema oferece ferramentas para gerenciamento de pacientes, agendamentos, prontuários médicos, equipe, finanças, estoque e muito mais.
 
-## Descrição
+![Tela de Boas-Vindas](./public/images/tela-welcome.png)
 
-O Projeto Saude é uma iniciativa do curso de Bacharelado em Tecnologia da Informação que busca melhorar a eficiência no atendimento de pacientes em postinhos de saúde. O objetivo é desenvolver uma solução tecnológica que otimize o processo de agendamento, triagem e atendimento, proporcionando uma melhor experiência tanto para os pacientes quanto para os profissionais de saúde.
+## 🚀 Funcionalidades
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/CaioSimioni/projeto-integrador)
-![GitHub](https://img.shields.io/github/license/CaioSimioni/projeto-integrador)
-![GitHub language count](https://img.shields.io/github/languages/top/CaioSimioni/projeto-integrador?color=blue&label=PHP)
+Este sistema oferece ferramentas completas para gestão de pacientes, incluindo prontuários eletrônicos, agendamento de consultas e acompanhamento de tratamentos. Também possui suporte para gestão da equipe com escala de plantões, ferramentas de comunicação e cadastro de especialidades.
 
-## Deploy
+As operações financeiras são otimizadas com faturamento, gerenciamento de convênios e relatórios financeiros. O controle de estoque e farmácia garante rastreamento adequado de medicamentos e materiais.
 
-Para configurar o ambiente e rodar o projeto, siga os passos abaixo:
+Funcionalidades adicionais incluem gerenciamento de exames e laboratório, acompanhamento de atendimentos de emergência e ferramentas de BI para geração de relatórios e dashboards. O sistema prioriza segurança e conformidade, oferecendo controle de acesso, auditoria de registros e aderência à LGPD e HIPAA.
 
-1. Clone o repositório para o seu ambiente local:
+## 🔧 Instalação e Deploy
 
-    ```sh
-    git clone https://github.com/CaioSimioni/projeto-integrador.git
-    cd projeto-integrador
+Você pode rodar este projeto de duas formas:
+
+### ✅ Método 1 - Ambiente local (requer PHP, Node, etc.)
+
+**Pré-requisitos:**
+
+- PHP >= 8.3
+- Composer
+- Node.js >= 20.x
+- MySQL ou SQLite
+- Extensões do PHP: `mbstring`, `xml`, `bcmath`, `curl`, `zip`, `pdo`, `sqlite3`, `mysql`, `gd`, `tokenizer`
+
+**Passos:**
+
+1. Clone o repositório
+
+    ```bash
+    git clone https://github.com/CaioSimioni/pi3-app.git
     ```
 
-2. Configure o arquivo `.env` com as variáveis de ambiente necessárias:
-
-    ```.env
-    # App
-    APP_NAME=ProjetoSaude
-    APP_PORT=8080
-    APP_URL=http://localhost:8080
-
-    # Database
-    DB_ROOT_PASSWORD=root
-    DB_HOST=db
-    DB_DRIVER=mysql
-    DB_DATABASE=projetointegrador
-    DB_USER=appuser
-    DB_PASSWORD=asdasd
-    DB_PORT=3306
-
-    # PHPMyAdmin
-    PMA_PORT=8081
+    ```bash
+    cd pi3-laravel
     ```
 
-3. Execute o comando para iniciar os serviços com Docker:
+2. Instale as dependências PHP
 
-    ```sh
-    docker-compose up --build
+    ```bash
+    composer install
     ```
 
-4. Acesse a aplicação no navegador utilizando a URL configurada no arquivo `.env`:
+3. Instale as dependências JS
 
-    ```
-    http://localhost:3000
-    ```
-
-5. Para acessar o PHPMyAdmin, utilize a porta configurada na variável `PMA_PORT` no arquivo `.env`. Por exemplo:
-
-    ```
-    http://localhost:8081
+    ```bash
+    yarn install
     ```
 
-6. Para parar os serviços Docker, utilize um dos seguintes comandos:
+4. Compile os assets
 
-    ```sh
-    docker-compose stop
+    ```bash
+    yarn build
     ```
 
-    ou
+5. Configure o ambiente
 
-    ```sh
-    docker-compose down
+    ```bash
+    cp .env.example .env
     ```
 
-7. Para adicionar um usuário admin inicial, altere o final do arquivo `init.sql` adicionando a seguinte linha:
-
-    ```sql
-    -- Opcional: Criar um usuário admin inicial
-    -- Senha: admin@1234
-    INSERT INTO users (username, email, password) VALUES
-    ('admin', 'admin@example.com', '$2y$12$O4HlpXtwzpKLqFo5hGDAseuxb.chDa850Y8RbKQnE/wkuX1mamxLe');
+    ```bash
+    php artisan key:generate
     ```
 
-## Contribuir
+6. Configure o banco de dados no `.env`
 
-Para mais detalhes sobre como contribuir, consulte o [guia de contribuição](./CONTRIBUTING.md).
+    Atualize as variáveis: `DATABASE_URL`, `DB_CONNECTION`, `DB_DATABASE`, etc.
 
-Vídeo ensinando a contribuir para o projeto: [Como contribuir para o projeto integrador](https://youtu.be/qOvohOSjMp4?si=kSjac_U-bX2DvoPZ).
+7. Rode as migrations e seeds
 
-## Licença
+    ```bash
+    php artisan migrate --seed
+    ```
 
-Este projeto está licenciado sob a [MIT LICENSE](./LICENSE).
+8. Inicie o servidor
 
-## Contribuidores
+    ```bash
+    php artisan serve
+    ```
 
-| [<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115><br><sub>Caio Ribeiro Simioni</sub>](https://github.com/CaioSimioni) |  [<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115><br><sub>Paulo Henrique Justino da Silva</sub>](https://github.com/JustinoSilva15) | [<img src="https://avatars.githubusercontent.com/u/146387290?v=4" width=115><br><sub>Lucas Henrique Dias Castro</sub>](https://github.com/lucashdc) | [<img src="https://avatars.githubusercontent.com/u/200537143?v=4" width=115><br><sub>Pedro Iago Victorio Das Dores</sub>](https://github.com/PEDROIAGOP5) | [<img src="https://avatars.githubusercontent.com/u/200687095?v=4" width=115><br><sub>Benjamin Rogério Sanches</sub>](https://github.com/benjamin-sanches) |
-| :---: | :---: | :---: | :--: | :---: |
+Acesse em: [http://localhost:8000](http://localhost:8000)
+
+### 🐳 Método 2 - Docker (isolado, pronto para dev)
+
+**Pré-requisitos:**
+
+- Docker instalado
+
+**Passos:**
+
+1. Clone o repositório
+
+    ```bash
+    git clone https://github.com/CaioSimioni/pi3-app.git
+    cd pi3-app
+    ```
+
+2. Construa a imagem
+
+    ```bash
+    docker build -t pi3-app .
+    ```
+
+3. Rode o container
+
+    ```bash
+    docker run -p 8080:8080 --rm pi3-app
+    ```
+
+Acesse em: [http://localhost:8080](http://localhost:8080)
+
+> O Dockerfile faz tudo: instala dependências, cria `.env`, compila os assets, roda as migrations e inicia o app.
+
+## 📲 Uso
+
+- Acesse `http://localhost:8000` (modo local) ou `http://localhost:8080` (Docker).
+- Faça login com a conta admin padrão (se existir) ou crie uma nova.
+
+![Tela do Painel](./public/images/tela-dashboard.png)
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Veja o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para mais detalhes sobre como contribuir. Lá tem instruções sobre setup do ambiente de dev, padrões de código e envio de PRs.
+
+Sinta-se livre pra dar fork no repositório, criar uma branch nova e mandar sua contribuição. A gente valoriza demais quem ajuda a melhorar esse projeto!
+
+Pra mudanças grandes, abra uma issue antes pra discutir a ideia.
+
+## 📬 Contato
+
+Dúvidas, bugs ou sugestões? Abre uma issue no GitHub que a gente responde!
+
+## 🌟 Contribuidores
+
+Agradecimentos aos seguintes contribuidores pelo esforço em melhorar o projeto:
+
+[<img src="https://avatars.githubusercontent.com/u/83130766?v=4" width=115 alt="Caio Ribeiro Simioni">](https://github.com/CaioSimioni)
+[<img src="https://avatars.githubusercontent.com/u/170760593?v=4" width=115 alt="Paulo Henrique Justino da Silva">](https://github.com/JustinoSilva15)
+[<img src="https://avatars.githubusercontent.com/u/146387290?v=4" width=115 alt="Lucas Henrique Dias Castro">](https://github.com/lucashdc)
+[<img src="https://avatars.githubusercontent.com/u/200537143?v=4" width=115 alt="Pedro Iago Victorio Das Dores">](https://github.com/PEDROIAGOP5)
+[<img src="https://avatars.githubusercontent.com/u/200687095?v=4" width=115 alt="Benjamin Rogério Sanches">](https://github.com/benjamin-sanches)
+
+Contribuições são sempre bem-vindas! Dá uma olhada na seção [Contribuindo](#-contribuindo) pra começar.
