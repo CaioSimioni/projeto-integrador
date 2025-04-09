@@ -107,5 +107,8 @@ RUN php artisan migrate --force && \
 # Expor a porta da aplicação
 EXPOSE 8080
 
+# Usa a porta do Heroku
+ENV PORT=8080
+
 # Comando para iniciar o servidor Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
