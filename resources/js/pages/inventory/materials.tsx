@@ -300,7 +300,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         <TableCell>{material.name}</TableCell>
                                         <TableCell>{material.description}</TableCell>
                                         <TableCell>{material.quantity}</TableCell>
-                                        <TableCell>
+                                        <TableCell className="flex">
                                             <Button variant="outline" className="mr-2" size="sm" onClick={() => openModal('edit', material)}>
                                                 Edit
                                                 <Pencil className="ml-2 h-4 w-4" />

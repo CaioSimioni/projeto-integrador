@@ -31,6 +31,7 @@ export interface SharedData {
     patientsQuantity: number;
     appointmentsQuantity: number;
     ziggy: Config & { location: string };
+    analytics: Analytics;
     [key: string]: unknown;
 }
 
@@ -62,7 +63,7 @@ export interface Patient {
     id: number;
     name: string;
     cpf: string;
-    birth_date: string;
+    birth_date: string | Date; // Permite string ou Date
     phone: string;
     email: string;
     address: string;
@@ -82,4 +83,26 @@ export interface Appointment {
     updated_at: string;
     patient?: Patient;
     [key: string]: unknown;
+}
+
+export interface Analytics {
+    total_patients: number;
+    active_patients: number;
+    inactive_patients: number;
+    total_appointments: number;
+
+    upcoming_appointments: number;
+    appointments_last_month: number;
+    average_age: number | null;
+    min_age: number | null;
+    max_age: number | null;
+    average_appointments_per_patient: number;
+    active_percentage: number;
+    inactive_percentage: number;
+    age_groups: {
+        '0-18': number;
+        '19-35': number;
+        '36-60': number;
+        '60+': number;
+    };
 }

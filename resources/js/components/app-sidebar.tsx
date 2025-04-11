@@ -4,19 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import {
-    CalendarDays,
-    ClipboardPen,
-    FileText,
-    HeartPulse,
-    LayoutGrid,
-    ReceiptText,
-    Shield,
-    Stethoscope,
-    UserRound,
-    UsersRound,
-    Warehouse,
-} from 'lucide-react';
+import { CalendarDays, LayoutGrid, Shield, UserRound, Warehouse } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -35,7 +23,7 @@ const mainNavItems: NavItem[] = [
         href: '/appointments',
         icon: CalendarDays,
     },
-    {
+    /* {
         title: 'Electronic Health Records',
         href: '',
         icon: FileText,
@@ -49,13 +37,13 @@ const mainNavItems: NavItem[] = [
         title: 'Billing',
         href: '',
         icon: ReceiptText,
-    },
+    }, */
     {
         title: 'Inventory & Pharmacy',
         href: '/inventory',
         icon: Warehouse,
     },
-    {
+    /* {
         title: 'Exams & Lab Tests',
         href: '',
         icon: Stethoscope,
@@ -69,7 +57,7 @@ const mainNavItems: NavItem[] = [
         title: 'Reports & Analytics',
         href: '',
         icon: ClipboardPen,
-    },
+    }, */
 ];
 
 const footerNavItems: NavItem[] = [

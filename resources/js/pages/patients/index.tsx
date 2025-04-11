@@ -1,42 +1,51 @@
-import { useState, type PropsWithChildren } from "react";
-import { Head, useForm } from "@inertiajs/react";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { CirclePlus, Pencil, Trash2 } from "lucide-react";
-import PatientForm from "@/components/patient-form";
-import PatientModal from "@/components/patient-modal";
-import AppLayout from "@/layouts/app-layout";
-import BasicLayout from "@/layouts/basic-layout";
-import { BreadcrumbItem, type NavItem, type Patient } from "@/types";
-import { ToastProvider, Toast, ToastTitle, ToastDescription, ToastViewport } from "@/components/ui/toaster";
+import PatientForm from '@/components/patient-form';
+import PatientModal from '@/components/patient-modal';
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Toast, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/toaster';
+import AppLayout from '@/layouts/app-layout';
+import BasicLayout from '@/layouts/basic-layout';
+import { BreadcrumbItem, type NavItem, type Patient } from '@/types';
+import { Head, useForm } from '@inertiajs/react';
+import { CirclePlus, Pencil, Trash2 } from 'lucide-react';
+import { useState, type PropsWithChildren } from 'react';
 
 export default function Patients({ patients }: PropsWithChildren<{ patients: Patient[] }>) {
-    const { data, setData, post, patch, delete: destroy, processing, errors, reset } = useForm({
-        name: "",
-        cpf: "",
-        birth_date: "",
-        insurance: "Nenhum",
+    const {
+        data,
+        setData,
+        post,
+        patch,
+        delete: destroy,
+        processing,
+        errors,
+        reset,
+    } = useForm({
+        name: '',
+        cpf: '',
+        birth_date: '',
+        insurance: 'Nenhum',
         is_active: true as boolean,
-        phone: "",
-        email: "",
-        address: "",
+        phone: '',
+        email: '',
+        address: '',
     });
 
-    const [modalType, setModalType] = useState<"create" | "edit" | "delete" | null>(null);
+    const [modalType, setModalType] = useState<'create' | 'edit' | 'delete' | null>(null);
     const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
     const [toastVisible, setToastVisible] = useState(false);
 
-    const openModal = (type: "create" | "edit" | "delete", patient: Patient | null = null) => {
+    const openModal = (type: 'create' | 'edit' | 'delete', patient: Patient | null = null) => {
         setSelectedPatient(patient);
         setModalType(type);
-        if (type === "edit" && patient) {
+        if (type === 'edit' && patient) {
             setData({
                 name: patient.name,
                 cpf: patient.cpf,
                 birth_date: patient.birth_date,
-                phone: patient.phone || "",
-                email: patient.email || "",
-                address: patient.address || "",
+                phone: patient.phone || '',
+                email: patient.email || '',
+                address: patient.address || '',
                 insurance: patient.insurance,
                 is_active: patient.is_active === true,
             });
@@ -44,8 +53,8 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
     };
 
     const handleSubmit = () => {
-        if (modalType === "create") {
-            post(route("patients.store"), {
+        if (modalType === 'create') {
+            post(route('patients.store'), {
                 onSuccess: () => {
                     reset();
                     setToastVisible(true);
@@ -54,8 +63,8 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                     setToastVisible(true);
                 },
             });
-        } else if (modalType === "edit" && selectedPatient) {
-            patch(route("patients.update", { patient: selectedPatient.id }), {
+        } else if (modalType === 'edit' && selectedPatient) {
+            patch(route('patients.update', { patient: selectedPatient.id }), {
                 onSuccess: () => {
                     reset();
                     setToastVisible(true);
@@ -64,8 +73,8 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                     setToastVisible(true);
                 },
             });
-        } else if (modalType === "delete" && selectedPatient) {
-            destroy(route("patients.destroy", { patient: selectedPatient.id }), {
+        } else if (modalType === 'delete' && selectedPatient) {
+            destroy(route('patients.destroy', { patient: selectedPatient.id }), {
                 onSuccess: () => {
                     setToastVisible(true);
                 },
@@ -98,10 +107,12 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                 <Head title="Patients" />
                 <BasicLayout sidebarNavItems={sidebarNavItems}>
                     <div className="space-y-6">
-                        <Button onClick={() => openModal("create")}>Create New Patient <CirclePlus /></Button>
+                        <Button onClick={() => openModal('create')}>
+                            Create New Patient <CirclePlus />
+                        </Button>
 
                         {toastVisible && (
-                            <Toast className={toastVisible ? "bg-green-500" : ""} onOpenChange={setToastVisible} open={toastVisible}>
+                            <Toast className={toastVisible ? 'bg-green-500' : ''} onOpenChange={setToastVisible} open={toastVisible}>
                                 <ToastTitle>Success</ToastTitle>
                                 <ToastDescription>Action completed successfully.</ToastDescription>
                             </Toast>
@@ -123,10 +134,10 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{patient.name}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{patient.cpf}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">
-                                            <Button className="mr-2" variant="outline" size="sm" onClick={() => openModal("edit", patient)}>
+                                            <Button className="mr-2" variant="outline" size="sm" onClick={() => openModal('edit', patient)}>
                                                 Edit <Pencil />
                                             </Button>
-                                            <Button variant="destructive" size="sm" onClick={() => openModal("delete", patient)}>
+                                            <Button variant="destructive" size="sm" onClick={() => openModal('delete', patient)}>
                                                 Delete <Trash2 />
                                             </Button>
                                         </TableCell>
@@ -139,14 +150,16 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                             <PatientModal
                                 open={!!modalType}
                                 setOpen={() => setModalType(null)}
-                                title={modalType === "delete" ? "Confirm Deletion" : modalType === "edit" ? "Edit Patient" : "Create Patient"}
-                                description={modalType === "delete" ? `Are you sure you want to delete ${selectedPatient?.name}?` : "Fill the details below"}
+                                title={modalType === 'delete' ? 'Confirm Deletion' : modalType === 'edit' ? 'Edit Patient' : 'Create Patient'}
+                                description={
+                                    modalType === 'delete' ? `Are you sure you want to delete ${selectedPatient?.name}?` : 'Fill the details below'
+                                }
                                 onConfirm={handleSubmit}
-                                confirmText={modalType === "delete" ? "Delete" : modalType === "edit" ? "Update" : "Create"}
-                                confirmVariant={modalType === "delete" ? "destructive" : "default"}
+                                confirmText={modalType === 'delete' ? 'Delete' : modalType === 'edit' ? 'Update' : 'Create'}
+                                confirmVariant={modalType === 'delete' ? 'destructive' : 'default'}
                                 processing={processing}
                             >
-                                {modalType !== "delete" && <PatientForm data={data} setData={setData} errors={errors} processing={processing} />}
+                                {modalType !== 'delete' && <PatientForm data={data} setData={setData} errors={errors} processing={processing} />}
                             </PatientModal>
                         )}
                     </div>

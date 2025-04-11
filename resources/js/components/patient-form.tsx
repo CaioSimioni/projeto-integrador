@@ -1,7 +1,7 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function PatientForm({ data, setData, errors, processing }: any) {
     return (
@@ -18,7 +18,13 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
             </div>
             <div>
                 <Label htmlFor="birth_date">Birth Date</Label>
-                <Input id="birth_date" type="date" value={data.birth_date} onChange={(e) => setData('birth_date', e.target.value)} disabled={processing} />
+                <Input
+                    id="birth_date"
+                    type="date"
+                    value={data.birth_date}
+                    onChange={(e) => setData('birth_date', e.target.value)}
+                    disabled={processing}
+                />
                 {errors.birth_date && <span>{errors.birth_date}</span>}
             </div>
             <div>
@@ -51,7 +57,12 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
                 {errors.insurance && <span>{errors.insurance}</span>}
             </div>
             <div className="flex items-center gap-2">
-                <Checkbox id="is_active" checked={data.is_active} onCheckedChange={(checked) => setData('is_active', checked === true)} disabled={processing} />
+                <Checkbox
+                    id="is_active"
+                    checked={data.is_active}
+                    onCheckedChange={(checked) => setData('is_active', checked === true)}
+                    disabled={processing}
+                />
                 <Label htmlFor="is_active">Active</Label>
             </div>
         </div>
