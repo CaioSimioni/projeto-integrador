@@ -7,7 +7,7 @@ import { Head } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Inventory & Pharmacy',
+        title: 'Estoque & Farmácia',
         href: '/inventory',
     },
 ];
@@ -15,17 +15,17 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function InventoryDashboard({ materialsQuantity }: { materialsQuantity: number }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Patients" />
+            <Head title="Estoque" />
             <InventoryLayout>
                 <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-1 lg:grid-cols-2">
                     <Card>
-                        <CardHeader>Available Materials</CardHeader>
+                        <CardHeader>Materiais Disponíveis</CardHeader>
                         <CardContent>
                             <h2 className="text-base font-bold text-gray-900 dark:text-white">{materialsQuantity}</h2>
                         </CardContent>
                     </Card>
                     <Card>
-                        <CardHeader>Available Medicines</CardHeader>
+                        <CardHeader>Medicamentos Disponíveis</CardHeader>
                         <CardContent>
                             <h2 className="text-base font-bold text-gray-900 dark:text-white">{0}</h2>
                         </CardContent>

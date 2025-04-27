@@ -8,24 +8,24 @@ import { type PropsWithChildren } from 'react';
 
 const sidebarNavItems: NavItem[] = [
     {
-        title: 'General',
+        title: 'Geral',
         href: '/inventory',
         icon: null,
     },
     {
-        title: 'Materials',
+        title: 'Materiais',
         href: '/inventory/materials',
         icon: null,
     },
     {
-        title: 'Medicines',
+        title: 'Medicamentos',
         href: '',
         icon: null,
     },
 ];
 
 export default function InventoryLayout({ children }: PropsWithChildren) {
-    // When server-side rendering, we only render the layout on the client...
+    // Quando renderizando do lado do servidor, apenas renderizamos o layout no cliente...
     if (typeof window === 'undefined') {
         return null;
     }
@@ -34,7 +34,7 @@ export default function InventoryLayout({ children }: PropsWithChildren) {
 
     return (
         <div className="px-4 py-6">
-            <Heading title="Inventory" description="Manage materials and medicines" />
+            <Heading title="Inventário" description="Gerenciar materiais e medicamentos" />
 
             <div className="flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:space-x-12">
                 <aside className="w-full max-w-xl lg:w-48">

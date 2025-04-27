@@ -8,14 +8,14 @@ export default function AppointmentForm({ data, setData, errors, processing, pat
     return (
         <div className="space-y-4">
             <div>
-                <Label htmlFor="patient_id">Patient</Label>
+                <Label htmlFor="patient_id">Paciente</Label>
                 <Select
                     value={data.patient_id}
                     onValueChange={(value) => setData('patient_id', value)}
                     disabled={processing}
                 >
                     <SelectTrigger>
-                        <SelectValue placeholder="Select a patient" />
+                        <SelectValue placeholder="Selecione um paciente" />
                     </SelectTrigger>
                     <SelectContent>
                         {patients.map((patient: Patient) => (
@@ -29,7 +29,7 @@ export default function AppointmentForm({ data, setData, errors, processing, pat
             </div>
 
             <div>
-                <Label htmlFor="appointment_date">Appointment Date</Label>
+                <Label htmlFor="appointment_date">Data do Agendamento</Label>
                 <Input
                     id="appointment_date"
                     type="datetime-local"
@@ -41,7 +41,7 @@ export default function AppointmentForm({ data, setData, errors, processing, pat
             </div>
 
             <div>
-                <Label htmlFor="notes">Notes</Label>
+                <Label htmlFor="notes">Notas</Label>
                 <Textarea
                     id="notes"
                     value={data.notes}

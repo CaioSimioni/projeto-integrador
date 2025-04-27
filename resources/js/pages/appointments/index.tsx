@@ -70,14 +70,14 @@ export default function Appointments({ appointments, patients }: PropsWithChildr
 
     const breadcrumbs: BreadcrumbItem[] = [
         {
-            title: 'Appointments Painel',
+            title: 'Painel de Consultas',
             href: '/appointments',
         },
     ];
 
     const sidebarNavItems: NavItem[] = [
         {
-            title: 'General',
+            title: 'Geral',
             href: '/appointments',
             icon: null,
         },
@@ -86,15 +86,15 @@ export default function Appointments({ appointments, patients }: PropsWithChildr
     return (
         <ToastProvider>
             <AppLayout breadcrumbs={breadcrumbs}>
-                <Head title="Appointments" />
+                <Head title="Consultas" />
                 <BasicLayout sidebarNavItems={sidebarNavItems}>
                     <div className="space-y-6">
-                        <Button onClick={() => openModal("create")}>Create New Appointment <CirclePlus /></Button>
+                        <Button onClick={() => openModal("create")}>Nova Consulta <CirclePlus /></Button>
 
                         {toastVisible && (
                             <Toast className={toastVisible ? "bg-green-500" : ""} onOpenChange={setToastVisible} open={toastVisible}>
-                                <ToastTitle>Success</ToastTitle>
-                                <ToastDescription>Action completed successfully.</ToastDescription>
+                                <ToastTitle>Sucesso</ToastTitle>
+                                <ToastDescription>Ação concluída com sucesso.</ToastDescription>
                             </Toast>
                         )}
 
@@ -102,9 +102,9 @@ export default function Appointments({ appointments, patients }: PropsWithChildr
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>ID</TableHead>
-                                    <TableHead>Patient</TableHead>
-                                    <TableHead>Appointment Date</TableHead>
-                                    <TableHead>Actions</TableHead>
+                                    <TableHead>Paciente</TableHead>
+                                    <TableHead>Data da Consulta</TableHead>
+                                    <TableHead>Ações</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -113,14 +113,20 @@ export default function Appointments({ appointments, patients }: PropsWithChildr
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{appointment.id}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{appointment.patient?.name || "N/A"}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">
-                                            {new Date(appointment.appointment_date).toLocaleString('UTC', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}
+                                            {new Date(appointment.appointment_date).toLocaleString('pt-BR', { 
+                                                day: '2-digit', 
+                                                month: '2-digit', 
+                                                year: 'numeric',
+                                                hour: '2-digit',
+                                                minute: '2-digit'
+                                            })}
                                         </TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">
                                             <Button className="mr-2" variant="outline" size="sm" onClick={() => openModal("edit", appointment)}>
-                                                Edit <Pencil />
+                                                Editar <Pencil />
                                             </Button>
                                             <Button variant="destructive" size="sm" onClick={() => openModal("delete", appointment)}>
-                                                Delete <Trash2 />
+                                                Excluir <Trash2 />
                                             </Button>
                                         </TableCell>
                                     </TableRow>
@@ -132,10 +138,10 @@ export default function Appointments({ appointments, patients }: PropsWithChildr
                             <AppointmentModal
                                 open={!!modalType}
                                 setOpen={() => setModalType(null)}
-                                title={modalType === "delete" ? "Confirm Deletion" : modalType === "edit" ? "Edit Appointment" : "Create Appointment"}
-                                description={modalType === "delete" ? `Are you sure you want to delete this appointment?` : "Fill the details below"}
+                                title={modalType === "delete" ? "Confirmar Exclusão" : modalType === "edit" ? "Editar Consulta" : "Nova Consulta"}
+                                description={modalType === "delete" ? `Tem certeza que deseja excluir esta consulta?` : "Preencha os detalhes abaixo"}
                                 onConfirm={handleSubmit}
-                                confirmText={modalType === "delete" ? "Delete" : modalType === "edit" ? "Update" : "Create"}
+                                confirmText={modalType === "delete" ? "Excluir" : modalType === "edit" ? "Atualizar" : "Criar"}
                                 confirmVariant={modalType === "delete" ? "destructive" : "default"}
                                 processing={processing}
                             >

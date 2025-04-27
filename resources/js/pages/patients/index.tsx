@@ -88,14 +88,14 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
 
     const breadcrumbs: BreadcrumbItem[] = [
         {
-            title: 'Patients Painel',
+            title: 'Painel de Pacientes',
             href: '/patients',
         },
     ];
 
     const sidebarNavItems: NavItem[] = [
         {
-            title: 'General',
+            title: 'Geral',
             href: '/patients',
             icon: null,
         },
@@ -104,17 +104,17 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
     return (
         <ToastProvider>
             <AppLayout breadcrumbs={breadcrumbs}>
-                <Head title="Patients" />
+                <Head title="Pacientes" />
                 <BasicLayout sidebarNavItems={sidebarNavItems}>
                     <div className="space-y-6">
                         <Button onClick={() => openModal('create')}>
-                            Create New Patient <CirclePlus />
+                            Novo Paciente <CirclePlus />
                         </Button>
 
                         {toastVisible && (
                             <Toast className={toastVisible ? 'bg-green-500' : ''} onOpenChange={setToastVisible} open={toastVisible}>
-                                <ToastTitle>Success</ToastTitle>
-                                <ToastDescription>Action completed successfully.</ToastDescription>
+                                <ToastTitle>Sucesso</ToastTitle>
+                                <ToastDescription>Ação concluída com sucesso.</ToastDescription>
                             </Toast>
                         )}
 
@@ -122,9 +122,9 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>ID</TableHead>
-                                    <TableHead>Name</TableHead>
+                                    <TableHead>Nome</TableHead>
                                     <TableHead>CPF</TableHead>
-                                    <TableHead>Actions</TableHead>
+                                    <TableHead>Ações</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -135,10 +135,10 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{patient.cpf}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">
                                             <Button className="mr-2" variant="outline" size="sm" onClick={() => openModal('edit', patient)}>
-                                                Edit <Pencil />
+                                                Editar <Pencil />
                                             </Button>
                                             <Button variant="destructive" size="sm" onClick={() => openModal('delete', patient)}>
-                                                Delete <Trash2 />
+                                                Excluir <Trash2 />
                                             </Button>
                                         </TableCell>
                                     </TableRow>
@@ -150,12 +150,12 @@ export default function Patients({ patients }: PropsWithChildren<{ patients: Pat
                             <PatientModal
                                 open={!!modalType}
                                 setOpen={() => setModalType(null)}
-                                title={modalType === 'delete' ? 'Confirm Deletion' : modalType === 'edit' ? 'Edit Patient' : 'Create Patient'}
+                                title={modalType === 'delete' ? 'Confirmar Exclusão' : modalType === 'edit' ? 'Editar Paciente' : 'Novo Paciente'}
                                 description={
-                                    modalType === 'delete' ? `Are you sure you want to delete ${selectedPatient?.name}?` : 'Fill the details below'
+                                    modalType === 'delete' ? `Tem certeza que deseja excluir ${selectedPatient?.name}?` : 'Preencha os detalhes abaixo'
                                 }
                                 onConfirm={handleSubmit}
-                                confirmText={modalType === 'delete' ? 'Delete' : modalType === 'edit' ? 'Update' : 'Create'}
+                                confirmText={modalType === 'delete' ? 'Excluir' : modalType === 'edit' ? 'Atualizar' : 'Criar'}
                                 confirmVariant={modalType === 'delete' ? 'destructive' : 'default'}
                                 processing={processing}
                             >

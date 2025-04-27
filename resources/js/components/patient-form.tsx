@@ -7,7 +7,7 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
     return (
         <div className="space-y-4">
             <div>
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Nome</Label>
                 <Input id="name" type="text" value={data.name} onChange={(e) => setData('name', e.target.value)} disabled={processing} />
                 {errors.name && <span>{errors.name}</span>}
             </div>
@@ -17,7 +17,7 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
                 {errors.cpf && <span>{errors.cpf}</span>}
             </div>
             <div>
-                <Label htmlFor="birth_date">Birth Date</Label>
+                <Label htmlFor="birth_date">Data de Nascimento</Label>
                 <Input
                     id="birth_date"
                     type="date"
@@ -28,25 +28,25 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
                 {errors.birth_date && <span>{errors.birth_date}</span>}
             </div>
             <div>
-                <Label htmlFor="phone">Phone</Label>
+                <Label htmlFor="phone">Telefone</Label>
                 <Input id="phone" type="text" value={data.phone} onChange={(e) => setData('phone', e.target.value)} disabled={processing} />
                 {errors.phone && <span>{errors.phone}</span>}
             </div>
             <div>
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">E-mail</Label>
                 <Input id="email" type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} disabled={processing} />
                 {errors.email && <span>{errors.email}</span>}
             </div>
             <div>
-                <Label htmlFor="address">Address</Label>
+                <Label htmlFor="address">Endereço</Label>
                 <Input id="address" type="text" value={data.address} onChange={(e) => setData('address', e.target.value)} disabled={processing} />
                 {errors.address && <span>{errors.address}</span>}
             </div>
             <div>
-                <Label htmlFor="insurance">Insurance</Label>
+                <Label htmlFor="insurance">Plano de Saúde</Label>
                 <Select value={data.insurance} onValueChange={(value) => setData('insurance', value)} disabled={processing}>
                     <SelectTrigger>
-                        <SelectValue placeholder="Select an insurance" />
+                        <SelectValue placeholder="Selecione um plano de saúde" />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="Nenhum">Nenhum</SelectItem>
@@ -63,7 +63,7 @@ export default function PatientForm({ data, setData, errors, processing }: any) 
                     onCheckedChange={(checked) => setData('is_active', checked === true)}
                     disabled={processing}
                 />
-                <Label htmlFor="is_active">Active</Label>
+                <Label htmlFor="is_active">Ativo</Label>
             </div>
         </div>
     );

@@ -22,10 +22,10 @@ export default function AppointmentModal({
                 {children}
                 <DialogFooter>
                     <Button onClick={onConfirm} disabled={processing} variant={confirmVariant}>
-                        {processing ? "Processing..." : confirmText}
+                        {processing ? "Processando..." : confirmText}
                     </Button>
                     <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline">Cancelar</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>

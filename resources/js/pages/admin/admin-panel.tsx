@@ -6,19 +6,19 @@ import BasicLayout from '@/layouts/basic-layout';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Admin Painel',
+        title: 'Painel Admin',
         href: '/admin',
     },
 ];
 
 const sidebarNavItems: NavItem[] = [
     {
-        title: 'General',
+        title: 'Geral',
         href: '/admin',
         icon: null,
     },
     {
-        title: 'Users',
+        title: 'Usuários',
         href: '/admin/users',
         icon: null,
     },
@@ -31,11 +31,11 @@ export default function Dashboard() {
             <Head title="Admin" />
             <BasicLayout sidebarNavItems={sidebarNavItems}>
                 <div className="space-y-6">
-                    <h1><strong>{auth.user.name}</strong> is an administrator</h1>
+                    <h1><strong>{auth.user.name}</strong> é um administrador</h1>
                 </div>
                 <div>
-                    <h1>Users Quantity: <strong>{usersQuantity}</strong></h1>
-                    <h1>Patients Quantity: <strong>{patientsQuantity}</strong></h1>
+                    <h1>Quantidade de Usuários: <strong>{usersQuantity}</strong></h1>
+                    <h1>Quantidade de Pacientes: <strong>{patientsQuantity}</strong></h1>
                 </div>
             </BasicLayout>
         </AppLayout>
