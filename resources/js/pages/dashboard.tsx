@@ -7,7 +7,7 @@ import { Activity, BarChart, CalendarDays, PieChart, UserRound } from 'lucide-re
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Painel de Controle',
         href: '/dashboard',
     },
 ];
@@ -17,79 +17,79 @@ export default function Dashboard() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
+            <Head title="Painel de Controle" />
             <div className="px-4 py-6">
-                <Heading title="Dashboard" description="Welcome to the dashboard" />
+                <Heading title="Painel de Controle" description="Bem-vindo ao painel de controle" />
                 <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-4">
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Total Patients <UserRound />
+                            Total de Pacientes <UserRound />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.total_patients}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Active Patients <Activity />
+                            Pacientes Ativos <Activity />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.active_patients}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Inactive Patients <Activity />
+                            Pacientes Inativos <Activity />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.inactive_patients}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Total Appointments <CalendarDays />
+                            Total de Consultas <CalendarDays />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.total_appointments}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Upcoming Appointments <CalendarDays />
+                            Próximas Consultas <CalendarDays />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.upcoming_appointments}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Appointments Last Month <BarChart />
+                            Consultas no Último Mês <BarChart />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.appointments_last_month}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Average Age <UserRound />
+                            Idade Média <UserRound />
                         </CardHeader>
-                        <CardContent className="text-3xl font-bold">{analytics.average_age ?? 'N/A'}</CardContent>
+                        <CardContent className="text-3xl font-bold">{analytics.average_age ?? 'N/D'}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Min Age <UserRound />
+                            Idade Mínima <UserRound />
                         </CardHeader>
-                        <CardContent className="text-3xl font-bold">{analytics.min_age ?? 'N/A'}</CardContent>
+                        <CardContent className="text-3xl font-bold">{analytics.min_age ?? 'N/D'}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Max Age <UserRound />
+                            Idade Máxima <UserRound />
                         </CardHeader>
-                        <CardContent className="text-3xl font-bold">{analytics.max_age ?? 'N/A'}</CardContent>
+                        <CardContent className="text-3xl font-bold">{analytics.max_age ?? 'N/D'}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Avg Appointments/Patient <BarChart />
+                            Média de Consultas/Paciente <BarChart />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.average_appointments_per_patient}</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Active % <PieChart />
+                            % Ativos <PieChart />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.active_percentage}%</CardContent>
                     </Card>
                     <Card>
                         <CardHeader className="flex-row justify-between">
-                            Inactive % <PieChart />
+                            % Inativos <PieChart />
                         </CardHeader>
                         <CardContent className="text-3xl font-bold">{analytics.inactive_percentage}%</CardContent>
                     </Card>

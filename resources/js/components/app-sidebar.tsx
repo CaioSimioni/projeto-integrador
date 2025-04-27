@@ -9,52 +9,52 @@ import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Painel',
         href: '/dashboard',
         icon: LayoutGrid,
     },
     {
-        title: 'Patients',
+        title: 'Pacientes',
         href: '/patients',
         icon: UserRound,
     },
     {
-        title: 'Appointments',
+        title: 'Consultas',
         href: '/appointments',
         icon: CalendarDays,
     },
     /* {
-        title: 'Electronic Health Records',
+        title: 'Prontuários Eletrônicos',
         href: '',
         icon: FileText,
     },
     {
-        title: 'Medical Staff',
+        title: 'Equipe Médica',
         href: '',
         icon: UsersRound,
     },
     {
-        title: 'Billing',
+        title: 'Faturamento',
         href: '',
         icon: ReceiptText,
     }, */
     {
-        title: 'Inventory & Pharmacy',
+        title: 'Inventário & Farmácia',
         href: '/inventory',
         icon: Warehouse,
     },
     /* {
-        title: 'Exams & Lab Tests',
+        title: 'Exames & Testes Laboratoriais',
         href: '',
         icon: Stethoscope,
     },
     {
-        title: 'Emergency & ICU',
+        title: 'Emergência & UTI',
         href: '',
         icon: HeartPulse,
     },
     {
-        title: 'Reports & Analytics',
+        title: 'Relatórios & Análises',
         href: '',
         icon: ClipboardPen,
     }, */
@@ -62,7 +62,7 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Admin Panel',
+        title: 'Painel de Administração',
         href: '/admin',
         icon: Shield,
     },

@@ -14,7 +14,7 @@ import { PropsWithChildren, useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Inventory & Pharmacy',
+        title: 'Estoque & Farmácia',
         href: '/inventory/materials',
     },
 ];
@@ -99,32 +99,35 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
     return (
         <ToastProvider>
             <AppLayout breadcrumbs={breadcrumbs}>
-                <Head title="Materials" />
+                <Head title="Materiais" />
                 <InventoryLayout>
                     <div className="space-y-6">
-                        <HeadingSmall title="Materials list" description="Add, edit or delete materials" />
+                        <HeadingSmall 
+                            title="Lista de Materiais" 
+                            description="Adicionar, editar ou remover materiais" 
+                        />
 
                         {toastVisible && (
                             <Toast className={toastVisible ? 'bg-green-500' : ''} onOpenChange={setToastVisible} open={toastVisible}>
-                                <ToastTitle>Success</ToastTitle>
-                                <ToastDescription>Action completed successfully.</ToastDescription>
+                                <ToastTitle>Sucesso</ToastTitle>
+                                <ToastDescription>Ação concluída com sucesso.</ToastDescription>
                             </Toast>
                         )}
 
                         <Button onClick={() => openModal('create')}>
-                            Create New Material <CirclePlus />
+                            Novo Material <CirclePlus />
                         </Button>
 
-                        {/* Create Dialog */}
+                        {/* Diálogo de Criação */}
                         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Create New Material</DialogTitle>
-                                    <DialogDescription>Fill in the details below to create a new material.</DialogDescription>
+                                    <DialogTitle>Novo Material</DialogTitle>
+                                    <DialogDescription>Preencha os detalhes abaixo para criar um novo material.</DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name">Name</Label>
+                                        <Label htmlFor="name">Nome</Label>
                                         <Input
                                             id="name"
                                             type="text"
@@ -135,7 +138,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.name && <span className="text-red-500">{errors.name}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="type">Type</Label>
+                                        <Label htmlFor="type">Tipo</Label>
                                         <Input
                                             id="type"
                                             type="text"
@@ -146,7 +149,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.type && <span className="text-red-500">{errors.type}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="quantity">Quantity</Label>
+                                        <Label htmlFor="quantity">Quantidade</Label>
                                         <Input
                                             id="quantity"
                                             type="number"
@@ -157,7 +160,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.quantity && <span className="text-red-500">{errors.quantity}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="expiration_date">Expiration Date</Label>
+                                        <Label htmlFor="expiration_date">Data de Validade</Label>
                                         <Input
                                             id="expiration_date"
                                             type="date"
@@ -168,7 +171,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.expiration_date && <span className="text-red-500">{errors.expiration_date}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="description">Description</Label>
+                                        <Label htmlFor="description">Descrição</Label>
                                         <Input
                                             id="description"
                                             type="text"
@@ -181,25 +184,25 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                 </div>
                                 <DialogFooter>
                                     <Button onClick={handleCreateMaterial} disabled={processing}>
-                                        {processing ? 'Creating...' : 'Create'}
+                                        {processing ? 'Criando...' : 'Criar'}
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
                         </Dialog>
 
-                        {/* Edit Dialog */}
+                        {/* Diálogo de Edição */}
                         <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Edit Material</DialogTitle>
-                                    <DialogDescription>Update the details below to edit the material.</DialogDescription>
+                                    <DialogTitle>Editar Material</DialogTitle>
+                                    <DialogDescription>Atualize os detalhes abaixo para editar o material.</DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name">Name</Label>
+                                        <Label htmlFor="name">Nome</Label>
                                         <Input
                                             id="name"
                                             type="text"
@@ -210,7 +213,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.name && <span className="text-red-500">{errors.name}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="type">Type</Label>
+                                        <Label htmlFor="type">Tipo</Label>
                                         <Input
                                             id="type"
                                             type="text"
@@ -221,7 +224,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.type && <span className="text-red-500">{errors.type}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="quantity">Quantity</Label>
+                                        <Label htmlFor="quantity">Quantidade</Label>
                                         <Input
                                             id="quantity"
                                             type="number"
@@ -232,7 +235,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.quantity && <span className="text-red-500">{errors.quantity}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="expiration_date">Expiration Date</Label>
+                                        <Label htmlFor="expiration_date">Data de Validade</Label>
                                         <Input
                                             id="expiration_date"
                                             type="date"
@@ -243,7 +246,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         {errors.expiration_date && <span className="text-red-500">{errors.expiration_date}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="description">Description</Label>
+                                        <Label htmlFor="description">Descrição</Label>
                                         <Input
                                             id="description"
                                             type="text"
@@ -256,30 +259,30 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                 </div>
                                 <DialogFooter>
                                     <Button onClick={handleEditMaterial} disabled={processing}>
-                                        {processing ? 'Updating...' : 'Update'}
+                                        {processing ? 'Atualizando...' : 'Atualizar'}
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
                         </Dialog>
 
-                        {/* Delete Dialog */}
+                        {/* Diálogo de Exclusão */}
                         <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Confirm Deletion</DialogTitle>
+                                    <DialogTitle>Confirmar Exclusão</DialogTitle>
                                     <DialogDescription>
-                                        Are you sure you want to delete the material <strong>{selectedMaterial?.name}</strong>?
+                                        Tem certeza que deseja excluir o material <strong>{selectedMaterial?.name}</strong>?
                                     </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter>
                                     <Button variant="destructive" onClick={() => handleDeleteMaterial(selectedMaterial!.id)}>
-                                        Delete
+                                        Excluir
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
@@ -289,9 +292,9 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Material</TableHead>
-                                    <TableHead>Description</TableHead>
-                                    <TableHead>Quantity</TableHead>
-                                    <TableHead>Actions</TableHead>
+                                    <TableHead>Descrição</TableHead>
+                                    <TableHead>Quantidade</TableHead>
+                                    <TableHead>Ações</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -302,11 +305,11 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                                         <TableCell>{material.quantity}</TableCell>
                                         <TableCell className="flex">
                                             <Button variant="outline" className="mr-2" size="sm" onClick={() => openModal('edit', material)}>
-                                                Edit
+                                                Editar
                                                 <Pencil className="ml-2 h-4 w-4" />
                                             </Button>
                                             <Button variant="destructive" size="sm" onClick={() => openModal('delete', material)}>
-                                                Delete <Trash2 className="ml-2 h-4 w-4" />
+                                                Excluir <Trash2 className="ml-2 h-4 w-4" />
                                             </Button>
                                         </TableCell>
                                     </TableRow>

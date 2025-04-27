@@ -17,19 +17,19 @@ import { CirclePlus, Pencil, Trash2 } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Admin Painel',
+        title: 'Painel Administrativo',
         href: '/admin',
     },
 ];
 
 const sidebarNavItems: NavItem[] = [
     {
-        title: 'General',
+        title: 'Geral',
         href: '/admin',
         icon: null,
     },
     {
-        title: 'Users',
+        title: 'Usuários',
         href: '/admin/users',
         icon: null,
     },
@@ -74,12 +74,12 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
     const handleCreateUser = () => {
         post(route('user.create'), {
             onSuccess: () => {
-                reset(); // Resetar o formulário após a criação
-                setDialogOpen(false); // Fechar o modal de criação
-                setToastVisible(true); // Mostrar o toast de sucesso
+                reset();
+                setDialogOpen(false);
+                setToastVisible(true);
             },
             onError: () => {
-                setToastVisible(true); // Mostrar o toast em caso de erro
+                setToastVisible(true);
             },
         });
     };
@@ -124,29 +124,32 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
     return (
         <ToastProvider>
             <AppLayout breadcrumbs={breadcrumbs}>
-                <Head title="Admin" />
+                <Head title="Administração" />
                 <BasicLayout sidebarNavItems={sidebarNavItems}>
                     <div className="space-y-6">
-                        <HeadingSmall title="Users informations" description="Create, Update or Delete users from application" />
+                        <HeadingSmall 
+                            title="Informações de Usuários" 
+                            description="Crie, atualize ou remova usuários do sistema" 
+                        />
 
                         {toastVisible && (
                             <Toast className={toastVisible ? "bg-green-500" : ""} onOpenChange={setToastVisible} open={toastVisible}>
-                                <ToastTitle>Success</ToastTitle>
-                                <ToastDescription>Action completed successfully.</ToastDescription>
+                                <ToastTitle>Sucesso</ToastTitle>
+                                <ToastDescription>Ação concluída com sucesso.</ToastDescription>
                             </Toast>
                         )}
 
-                        <Button onClick={() => setDialogOpen(true)}>Create New User <CirclePlus /></Button>
+                        <Button onClick={() => setDialogOpen(true)}>Novo Usuário <CirclePlus /></Button>
 
                         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Create New User</DialogTitle>
-                                    <DialogDescription>Fill in the details below to create a new user.</DialogDescription>
+                                    <DialogTitle>Criar Novo Usuário</DialogTitle>
+                                    <DialogDescription>Preencha os detalhes abaixo para criar um novo usuário.</DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name">Name</Label>
+                                        <Label htmlFor="name">Nome</Label>
                                         <Input
                                             id="name"
                                             type="text"
@@ -157,7 +160,7 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         {errors.name && <span>{errors.name}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="email">Email</Label>
+                                        <Label htmlFor="email">E-mail</Label>
                                         <Input
                                             id="email"
                                             type="email"
@@ -168,7 +171,7 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         {errors.email && <span>{errors.email}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="password">Password</Label>
+                                        <Label htmlFor="password">Senha</Label>
                                         <Input
                                             id="password"
                                             type="password"
@@ -179,7 +182,7 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         {errors.password && <span>{errors.password}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="password_confirmation">Confirm Password</Label>
+                                        <Label htmlFor="password_confirmation">Confirmar Senha</Label>
                                         <Input
                                             id="password_confirmation"
                                             type="password"
@@ -190,14 +193,14 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         {errors.password_confirmation && <span>{errors.password_confirmation}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="role">Role</Label>
+                                        <Label htmlFor="role">Função</Label>
                                         <Select
                                             value={data.role}
                                             onValueChange={(value) => setData("role", value)}
                                             disabled={processing}
                                         >
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select a role" />
+                                                <SelectValue placeholder="Selecione uma função" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {Object.keys(roles).map((role) => (
@@ -212,10 +215,10 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                 </div>
                                 <DialogFooter>
                                     <Button onClick={handleCreateUser} disabled={processing}>
-                                        {processing ? 'Creating...' : 'Create'}
+                                        {processing ? 'Criando...' : 'Criar'}
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
@@ -224,12 +227,12 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                         <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Edit User</DialogTitle>
-                                    <DialogDescription>Update the details below to edit the user.</DialogDescription>
+                                    <DialogTitle>Editar Usuário</DialogTitle>
+                                    <DialogDescription>Atualize os detalhes abaixo para editar o usuário.</DialogDescription>
                                 </DialogHeader>
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name">Name</Label>
+                                        <Label htmlFor="name">Nome</Label>
                                         <Input
                                             id="name"
                                             type="text"
@@ -240,7 +243,7 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         {errors.name && <span>{errors.name}</span>}
                                     </div>
                                     <div>
-                                        <Label htmlFor="email">Email</Label>
+                                        <Label htmlFor="email">E-mail</Label>
                                         <Input
                                             id="email"
                                             type="email"
@@ -259,12 +262,12 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                             }
                                             disabled={processing}
                                         />
-                                        <Label htmlFor="reset_password">Reset Password</Label>
+                                        <Label htmlFor="reset_password">Redefinir Senha</Label>
                                     </div>
                                     {resetPassword && (
                                         <>
                                             <div>
-                                                <Label htmlFor="password">Password</Label>
+                                                <Label htmlFor="password">Senha</Label>
                                                 <Input
                                                     id="password"
                                                     type="password"
@@ -275,7 +278,7 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                                 {errors.password && <span>{errors.password}</span>}
                                             </div>
                                             <div>
-                                                <Label htmlFor="password_confirmation">Confirm Password</Label>
+                                                <Label htmlFor="password_confirmation">Confirmar Senha</Label>
                                                 <Input
                                                     id="password_confirmation"
                                                     type="password"
@@ -292,14 +295,14 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         </>
                                     )}
                                     <div>
-                                        <Label htmlFor="role">Role</Label>
+                                        <Label htmlFor="role">Função</Label>
                                         <Select
                                             value={data.role}
                                             onValueChange={(value) => setData("role", value)}
                                             disabled={processing}
                                         >
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select a role" />
+                                                <SelectValue placeholder="Selecione uma função" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {Object.keys(roles).map((role) => (
@@ -314,10 +317,10 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                 </div>
                                 <DialogFooter>
                                     <Button onClick={handleEditUser} disabled={processing}>
-                                        {processing ? 'Updating...' : 'Update'}
+                                        {processing ? 'Atualizando...' : 'Atualizar'}
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
@@ -326,15 +329,15 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                         <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                             <DialogContent>
                                 <DialogHeader>
-                                    <DialogTitle>Confirm Deletion</DialogTitle>
-                                    <DialogDescription>Are you sure you want to delete the user <strong>{selectedUser?.name}</strong>?</DialogDescription>
+                                    <DialogTitle>Confirmar Exclusão</DialogTitle>
+                                    <DialogDescription>Tem certeza que deseja excluir o usuário <strong>{selectedUser?.name}</strong>?</DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter>
                                     <Button variant="destructive" onClick={() => handleDeleteUser(selectedUser!.id)}>
-                                        Delete
+                                        Excluir
                                     </Button>
                                     <DialogClose asChild>
-                                        <Button variant="outline">Cancel</Button>
+                                        <Button variant="outline">Cancelar</Button>
                                     </DialogClose>
                                 </DialogFooter>
                             </DialogContent>
@@ -344,12 +347,12 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>ID</TableHead>
-                                    <TableHead className="text-center">Name</TableHead>
-                                    <TableHead className="text-center">Email</TableHead>
-                                    <TableHead className="text-center">Role</TableHead>
-                                    <TableHead className="text-center">Created At</TableHead>
-                                    <TableHead className="text-center">Updated At</TableHead>
-                                    <TableHead className="text-center">Actions</TableHead>
+                                    <TableHead className="text-center">Nome</TableHead>
+                                    <TableHead className="text-center">E-mail</TableHead>
+                                    <TableHead className="text-center">Função</TableHead>
+                                    <TableHead className="text-center">Criado em</TableHead>
+                                    <TableHead className="text-center">Atualizado em</TableHead>
+                                    <TableHead className="text-center">Ações</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -359,11 +362,11 @@ export default function Users({ users, roles }: PropsWithChildren<{ users: User[
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{user.name}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{user.email}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{roles[user.role]}</TableCell>
-                                        <TableCell className="px-6 py-4 whitespace-nowrap">{new Date(user.created_at).toLocaleString('UTC', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}</TableCell>
-                                        <TableCell className="px-6 py-4 whitespace-nowrap">{new Date(user.updated_at).toLocaleString('UTC', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' })}</TableCell>
+                                        <TableCell className="px-6 py-4 whitespace-nowrap">{new Date(user.created_at).toLocaleString('pt-BR')}</TableCell>
+                                        <TableCell className="px-6 py-4 whitespace-nowrap">{new Date(user.updated_at).toLocaleString('pt-BR')}</TableCell>
                                         <TableCell className="px-6 py-4 whitespace-nowrap">
-                                            <Button variant="outline" className="mr-2" size="sm" onClick={() => openModal("edit", user)}>Edit<Pencil /></Button>
-                                            <Button variant="destructive" size="sm" onClick={() => openModal("delete", user)}>Delete <Trash2 /></Button>
+                                            <Button variant="outline" className="mr-2" size="sm" onClick={() => openModal("edit", user)}>Editar<Pencil /></Button>
+                                            <Button variant="destructive" size="sm" onClick={() => openModal("delete", user)}>Excluir <Trash2 /></Button>
                                         </TableCell>
                                     </TableRow>
                                 ))}
