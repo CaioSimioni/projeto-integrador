@@ -1,3 +1,4 @@
+import Heading from '@/components/heading';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
@@ -5,10 +6,36 @@ import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 
-export default function BasicLayout({ children, sidebarNavItems }: PropsWithChildren<{ sidebarNavItems: NavItem[] }>) {
+const sidebarNavItems: NavItem[] = [
+    {
+        title: 'Visão Geral',
+        href: '/patients',
+        icon: null,
+    },
+    {
+        title: 'Lista de Pacientes',
+        href: '/patients/list',
+        icon: null,
+    },
+    {
+        title: 'Novo Paciente',
+        href: '',
+        icon: null,
+    },
+];
+
+export default function PatientsLayout({ children }: PropsWithChildren) {
+    // Quando renderizando do lado do servidor, apenas renderizamos o layout no cliente...
+    if (typeof window === 'undefined') {
+        return null;
+    }
+
     const currentPath = window.location.pathname;
+
     return (
         <div className="px-4 py-6">
+            <Heading title="Pacientes" description="Gerenciar informações dos pacientes" />
+
             <div className="flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:space-x-12">
                 <aside className="w-full max-w-xl lg:w-48">
                     <nav className="flex flex-col space-y-1 space-x-0">

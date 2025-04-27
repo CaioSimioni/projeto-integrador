@@ -20,7 +20,7 @@ class AppointmentsControllerTest extends TestCase
         $response = $this->get(route('appointments.index'));
 
         $response->assertStatus(200); // Verifica se a rota retorna status 200
-        $response->assertInertia(fn ($page) => $page->component('appointments/index')); // Verifica se a view correta foi carregada
+        $response->assertInertia(fn($page) => $page->component('appointments/index')); // Verifica se a view correta foi carregada
     }
 
     public function test_appointment_can_be_created()

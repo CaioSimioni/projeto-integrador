@@ -36,10 +36,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     };
 
     return (
-        <AuthLayout 
-            title="Acesse sua conta" 
-            description="Digite seu e-mail e senha para acessar sua conta"
-        >
+        <AuthLayout title="Acesse sua conta" description="Digite seu e-mail e senha para acessar sua conta">
             <Head title="Login" />
 
             <form className="flex flex-col gap-6" onSubmit={submit}>
@@ -57,7 +54,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="email@exemplo.com"
                         />
-                        <InputError message={errors.email ? "Por favor, digite um endereço de e-mail válido." : errors.email} />
+                        <InputError message={errors.email ? 'Por favor, digite um endereço de e-mail válido.' : errors.email} />
                     </div>
 
                     <div className="grid gap-2">

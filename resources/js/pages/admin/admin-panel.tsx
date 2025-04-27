@@ -1,8 +1,7 @@
-import AppLayout from "@/layouts/app-layout";
-import { type BreadcrumbItem } from '@/types';
-import { Head, usePage } from '@inertiajs/react';
-import { type NavItem, type SharedData } from '@/types';
+import AppLayout from '@/layouts/app-layout';
 import BasicLayout from '@/layouts/basic-layout';
+import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
+import { Head, usePage } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -31,11 +30,17 @@ export default function Dashboard() {
             <Head title="Admin" />
             <BasicLayout sidebarNavItems={sidebarNavItems}>
                 <div className="space-y-6">
-                    <h1><strong>{auth.user.name}</strong> é um administrador</h1>
+                    <h1>
+                        <strong>{auth.user.name}</strong> é um administrador
+                    </h1>
                 </div>
                 <div>
-                    <h1>Quantidade de Usuários: <strong>{usersQuantity}</strong></h1>
-                    <h1>Quantidade de Pacientes: <strong>{patientsQuantity}</strong></h1>
+                    <h1>
+                        Quantidade de Usuários: <strong>{usersQuantity}</strong>
+                    </h1>
+                    <h1>
+                        Quantidade de Pacientes: <strong>{patientsQuantity}</strong>
+                    </h1>
                 </div>
             </BasicLayout>
         </AppLayout>

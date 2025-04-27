@@ -6,7 +6,7 @@ export default function Welcome() {
 
     return (
         <>
-            <Head title="Projeto Saúde" >
+            <Head title="Projeto Saúde">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link href="https://fonts.bunny.net/css?family=alexandria:300,400,500" rel="stylesheet" />
             </Head>
@@ -14,9 +14,10 @@ export default function Welcome() {
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
                         <div className="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-15 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
-                            <h1 className="mb-1 text-2xl font-extrabold ">Gestão Hospitalar</h1>
+                            <h1 className="mb-1 text-2xl font-extrabold">Gestão Hospitalar</h1>
                             <p className="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                                Sistema perfeito para centros de saúde e hospitais que desejam ter controle completo sobre seus pacientes e agendamentos.
+                                Sistema perfeito para centros de saúde e hospitais que desejam ter controle completo sobre seus pacientes e
+                                agendamentos.
                             </p>
                             <ul className="mb-4 flex flex-col lg:mb-6">
                                 <li className="relative flex items-center gap-4 py-2 before:absolute before:top-1/2 before:bottom-0 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]">
@@ -101,7 +102,6 @@ export default function Welcome() {
                                     )}
                                 </li>
                             </ul>
-
                         </div>
                         <div className="relative -mb-px aspect-[335/376] w-full shrink-0 overflow-hidden rounded-t-lg bg-[#fff2f2] lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg dark:bg-[#1D0002]">
                             <img src="/images/welcome.jpg" alt="bem-vindo" />

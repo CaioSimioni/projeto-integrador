@@ -102,10 +102,7 @@ export default function Materials({ materials }: PropsWithChildren<{ materials: 
                 <Head title="Materiais" />
                 <InventoryLayout>
                     <div className="space-y-6">
-                        <HeadingSmall 
-                            title="Lista de Materiais" 
-                            description="Adicionar, editar ou remover materiais" 
-                        />
+                        <HeadingSmall title="Lista de Materiais" description="Adicionar, editar ou remover materiais" />
 
                         {toastVisible && (
                             <Toast className={toastVisible ? 'bg-green-500' : ''} onOpenChange={setToastVisible} open={toastVisible}>

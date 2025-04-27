@@ -4,19 +4,24 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { CalendarDays, LayoutGrid, Shield, UserRound, Warehouse } from 'lucide-react';
+import { CalendarDays, NotepadText, Shield, UserRound, Wallpaper, Warehouse } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Painel',
         href: '/dashboard',
-        icon: LayoutGrid,
+        icon: Wallpaper,
     },
     {
         title: 'Pacientes',
         href: '/patients',
         icon: UserRound,
+    },
+    {
+        title: 'Exames',
+        href: '',
+        icon: NotepadText,
     },
     {
         title: 'Consultas',

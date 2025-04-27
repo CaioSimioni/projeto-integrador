@@ -66,6 +66,8 @@ export interface Patient {
     birth_date: string | Date; // Permite string ou Date
     phone: string;
     email: string;
+    sus: string;
+    medical_record: string;
     address: string;
     insurance: string;
     is_active: boolean;

@@ -19,7 +19,7 @@ class PatientControllerTest extends TestCase
         $response = $this->get(route('patients.index'));
 
         $response->assertStatus(200); // Verifica se a rota retorna status 200
-        $response->assertInertia(fn ($page) => $page->component('patients/index'));
+        $response->assertInertia(fn($page) => $page->component('patients/index'));
     }
 
     public function test_patient_can_be_created()

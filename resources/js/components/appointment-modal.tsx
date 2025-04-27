@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 export default function AppointmentModal({
     open,
@@ -9,7 +9,7 @@ export default function AppointmentModal({
     children,
     onConfirm,
     confirmText,
-    confirmVariant = "default",
+    confirmVariant = 'default',
     processing,
 }: any) {
     return (
@@ -22,7 +22,7 @@ export default function AppointmentModal({
                 {children}
                 <DialogFooter>
                     <Button onClick={onConfirm} disabled={processing} variant={confirmVariant}>
-                        {processing ? "Processando..." : confirmText}
+                        {processing ? 'Processando...' : confirmText}
                     </Button>
                     <DialogClose asChild>
                         <Button variant="outline">Cancelar</Button>
