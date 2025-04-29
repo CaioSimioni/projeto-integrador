@@ -9,8 +9,8 @@ import { PropsWithChildren } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Painel de Pacientes',
-        href: '/patients',
+        title: 'Lista de Pacientes',
+        href: '/patients/list',
     },
 ];
 
@@ -34,10 +34,10 @@ export default function PatientsList({ patients }: PropsWithChildren<{ patients:
                             </TableHeader>
                             <TableBody>
                                 {patients.map((patient) => (
-                                    <TableRow key={patient.name}>
-                                        <TableCell className="whitespace-nowrap">{patient.name}</TableCell>
+                                    <TableRow key={String(patient.name)}>
+                                        <TableCell className="whitespace-nowrap">{patient.full_name}</TableCell>
                                         <TableCell className="whitespace-nowrap">{patient.cpf}</TableCell>
-                                        <TableCell className="whitespace-nowrap">{patient.sus}</TableCell>
+                                        <TableCell className="whitespace-nowrap">{patient.sus_number}</TableCell>
                                         <TableCell className="whitespace-nowrap">{patient.medical_record}</TableCell>
                                         <TableCell className="whitespace-nowrap">
                                             <Button variant={'link'} size={'sm'} className="cursor-pointer">

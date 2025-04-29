@@ -61,15 +61,26 @@ export interface Material {
 
 export interface Patient {
     id: number;
-    name: string;
+    full_name: string;
     cpf: string;
     birth_date: string | Date; // Permite string ou Date
-    phone: string;
-    email: string;
-    sus: string;
+    gender: string;
+    mother_name: string;
+    father_name: string;
+    sus_number: string;
     medical_record: string;
+    nationality: string;
+    birth_place: string;
+    state: string;
+    cep: string;
     address: string;
-    insurance: string;
+    number: string;
+    complement: string | null;
+    neighborhood: string;
+    city: string;
+    state_address: string;
+    country: string;
+    phone: string;
     is_active: boolean;
     created_at: string;
     updated_at: string;

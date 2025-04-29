@@ -19,7 +19,7 @@ const sidebarNavItems: NavItem[] = [
     },
     {
         title: 'Novo Paciente',
-        href: '',
+        href: '/patients/create',
         icon: null,
     },
 ];

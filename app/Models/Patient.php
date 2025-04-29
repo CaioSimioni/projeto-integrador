@@ -10,19 +10,35 @@ class Patient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'full_name',
         'cpf',
         'birth_date',
-        'phone',
-        'email',
+        'gender',
+        'mother_name',
+        'father_name',
+        'sus_number',
+        'medical_record',
+        'nationality',
+        'birth_place',
+        'state',
+        'cep',
         'address',
-        'insurance',
-        'is_active',
+        'number',
+        'complement',
+        'neighborhood',
+        'city',
+        'state_address',
+        'country',
+        'phone',
     ];
 
     protected $casts = [
         'birth_date' => 'date',
-        'is_active' => 'boolean',
     ];
-}
 
+    // Já deixa o esquema preparado pro relacionamento com exames
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+}
