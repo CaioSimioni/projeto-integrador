@@ -12,11 +12,10 @@ class PatientController extends Controller
 {
     public function index()
     {
-        // Alterações para incluir contagem e dados dos pacientes
         $dashboard_infos = [
-            'totalPatients' => Patient::count(),
-            'activePatients' => Patient::where('is_active', true)->count(),
-            'inactivePatients' => Patient::where('is_active', false)->count(),
+            'total_patients' => Patient::count(),
+            'active_patients' => Patient::where('is_active', true)->count(),
+            'inactive_patients' => Patient::where('is_active', false)->count(),
         ];
 
         return Inertia::render('patients/index', [
@@ -26,15 +25,13 @@ class PatientController extends Controller
 
     public function create()
     {
-        // Renderiza o formulário de criação de paciente
         return Inertia::render('patients/patients-create');
     }
 
     public function list()
     {
-        // Lista todos os pacientes
         return Inertia::render('patients/patients-list', [
-            'patients' => Patient::orderBy('name')->get(),
+            'patients' => Patient::orderBy('full_name')->get(),
         ]);
     }
 
@@ -43,18 +40,17 @@ class PatientController extends Controller
         try {
             $data = $request->validated();
 
-            // Converter camelCase para snake_case
             $patientData = [
-                'full_name' => $data['fullName'],
-                'cpf' => preg_replace('/[^0-9]/', '', $data['cpf']), // Remove formatação
-                'birth_date' => $data['birthDate'],
+                'full_name' => $data['full_name'],
+                'cpf' => $data['cpf'],
+                'birth_date' => $data['birth_date'],
                 'gender' => $data['gender'],
-                'mother_name' => $data['motherName'],
-                'father_name' => $data['fatherName'] ?? null,
-                'sus_number' => $data['susNumber'] ?? null,
-                'medical_record' => $data['medicalRecord'] ?? null,
+                'mother_name' => $data['mother_name'],
+                'father_name' => $data['father_name'] ?? null,
+                'sus_number' => $data['sus_number'] ?? null,
+                'medical_record' => $data['medical_record'] ?? null,
                 'nationality' => $data['nationality'] ?? null,
-                'birth_place' => $data['birthPlace'] ?? null,
+                'birth_place' => $data['birth_place'] ?? null,
                 'state' => $data['state'] ?? null,
                 'cep' => $data['cep'] ?? null,
                 'address' => $data['address'] ?? null,
@@ -77,7 +73,6 @@ class PatientController extends Controller
 
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        // Atualiza as informações do paciente, incluindo os novos campos
         $patient->update($request->validated());
 
         return redirect()->route('patients.index')->with('success', 'Paciente atualizado com sucesso!');
@@ -85,19 +80,16 @@ class PatientController extends Controller
 
     public function destroy(Patient $patient)
     {
-        // Exclui o paciente
         $patient->delete();
 
         return redirect()->route('patients.index')->with('success', 'Paciente excluído com sucesso!');
     }
 
-    // Aqui podemos adicionar o método para listar os exames do paciente
     public function exams(Patient $patient)
     {
-        // Exibe os exames do paciente (exemplo de implementação)
         return Inertia::render('patients/exams', [
             'patient' => $patient,
-            'exams' => $patient->exams, // Relacionamento com os exames
+            'exams' => $patient->exams,
         ]);
     }
 }

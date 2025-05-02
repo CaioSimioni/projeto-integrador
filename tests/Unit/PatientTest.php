@@ -13,12 +13,12 @@ class PatientTest extends TestCase
     public function test_patient_can_be_created()
     {
         $patient = Patient::factory()->create([
-            'name' => 'John Doe',
+            'full_name' => 'John Doe',
             'cpf' => '12345678901',
         ]);
 
         $this->assertDatabaseHas('patients', [
-            'name' => 'John Doe',
+            'full_name' => 'John Doe',
             'cpf' => '12345678901',
         ]);
     }

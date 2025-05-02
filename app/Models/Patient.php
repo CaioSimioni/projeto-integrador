@@ -37,8 +37,8 @@ class Patient extends Model
     ];
 
     // Já deixa o esquema preparado pro relacionamento com exames
-    public function exams()
+    /* public function exams()
     {
         return $this->hasMany(Exam::class);
-    }
+    } */
 }

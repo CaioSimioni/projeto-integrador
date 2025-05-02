@@ -13,7 +13,7 @@ class PatientRequestTest extends TestCase
     public function test_unauthenticated_user_cannot_store_patient()
     {
         $response = $this->post(route('patients.store'), [
-            'name' => 'John Doe',
+            'full_name' => 'John Doe',
             'cpf' => '12345678901',
         ]);
 
@@ -25,20 +25,33 @@ class PatientRequestTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->post(route('patients.store'), [
-            'name' => 'John Doe',
-            'cpf' => '12345678901',
+            'full_name' => 'João da Silva',  // Nome correto
+            'cpf' => '12345678900',  // CPF correto
             'birth_date' => '1990-01-01',
-            'phone' => '1234567890',
-            'email' => 'john@example.com',
-            'address' => '123 Main St',
-            'insurance' => 'Nenhum',
-            'is_active' => true,
+            'gender' => 'male',
+            'mother_name' => 'Maria da Silva',
+            'father_name' => 'José da Silva',
+            'sus_number' => '123456789012345',
+            'medical_record' => 'MR-1234-AB',
+            'nationality' => 'Brasileiro',
+            'birth_place' => 'São Paulo',
+            'state' => 'SP',
+            'zip_code' => '23465-678',
+            'address' => 'Rua das Flores, 123',
+            'number' => '123',
+            'complement' => 'Apto 101',
+            'neighborhood' => 'Centro',
+            'city' => 'São Paulo',
+            'state_address' => 'SP',
+            'country' => 'Brasil',
+            'phone' => '(11) 98765-4321',
         ]);
 
         $response->assertFound(); // Verifica se a criação redireciona
+        // Verifique se o paciente foi realmente salvo com os dados corretos
         $this->assertDatabaseHas('patients', [
-            'name' => 'John Doe',
-            'cpf' => '12345678901',
+            'full_name' => 'João da Silva',  // Alinhar com o nome que foi enviado
+            'cpf' => '12345678900',  // Alinhar com o CPF que foi enviado
         ]);
     }
 }

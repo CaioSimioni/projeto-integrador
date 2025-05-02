@@ -10,18 +10,20 @@ class PatientValidationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_name_is_required()
+    public function test_patient_validation_requires_name()
     {
         // Simula um usuário autenticado
         $user = \App\Models\User::factory()->create();
         $this->actingAs($user);
 
-        // Tenta criar um paciente sem o campo "name"
         $response = $this->post(route('patients.store'), [
             'cpf' => '12345678901', // Nome faltando
+            'birth_date' => '2000-01-01',
+            'gender' => 'male',
+            'mother_name' => 'Mary Doe',
         ]);
 
-        // Verifica se o erro de validação para o campo "name" foi retornado
-        $response->assertSessionHasErrors(['name']);
+        // Verifica se o erro de validação para o campo "fullName" foi retornado
+        $response->assertSessionHasErrors(['full_name']);
     }
 }
