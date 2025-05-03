@@ -1,3 +1,4 @@
+import { MapModal } from '@/components/modal-mapa';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
@@ -5,7 +6,7 @@ import PatientLayout from '@/layouts/patients-layout';
 import { BreadcrumbItem, Patient } from '@/types';
 import { Head } from '@inertiajs/react';
 import { Eye, Trash2 } from 'lucide-react';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -15,6 +16,18 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function PatientsList({ patients }: PropsWithChildren<{ patients: Patient[] }>) {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [endereco, setEndereco] = useState('');
+
+    // Função para buscar o endereço do paciente (ajuste conforme sua API)
+    async function handleVerNoMapa(patient: Patient) {
+        const cepFormatado = patient.cep.replace(/(\d{5})(\d{3})/, '$1-$2');
+
+        const fullEndereco = `${patient.address}, ${patient.number}, ${patient.city} - ${patient.state}, ${cepFormatado}`;
+        setEndereco(fullEndereco);
+        setModalOpen(true);
+    }
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Buscar Paciente" />
@@ -34,19 +47,21 @@ export default function PatientsList({ patients }: PropsWithChildren<{ patients:
                             </TableHeader>
                             <TableBody>
                                 {patients.map((patient) => (
-                                    <TableRow key={String(patient.name)}>
+                                    <TableRow key={patient.id}>
                                         <TableCell className="whitespace-nowrap">{patient.full_name}</TableCell>
                                         <TableCell className="whitespace-nowrap">{patient.cpf}</TableCell>
                                         <TableCell className="whitespace-nowrap">{patient.sus_number}</TableCell>
                                         <TableCell className="whitespace-nowrap">{patient.medical_record}</TableCell>
                                         <TableCell className="whitespace-nowrap">
-                                            <Button variant={'link'} size={'sm'} className="cursor-pointer">
+                                            <Button variant={'link'} size={'sm'} className="cursor-pointer" onClick={() => handleVerNoMapa(patient)}>
                                                 Ver no mapa
                                             </Button>
                                         </TableCell>
                                         <TableCell className="whitespace-nowrap">
-                                            <Button variant={'outline'} className="mr-1">
-                                                Visualizar <Eye />
+                                            <Button asChild variant={'outline'} className="mr-1">
+                                                <a href={route('patients.edit', { patient: patient.id })}>
+                                                    Visualizar <Eye />
+                                                </a>
                                             </Button>
                                             <Button variant={'destructive'}>
                                                 Excluir <Trash2 />
@@ -58,6 +73,7 @@ export default function PatientsList({ patients }: PropsWithChildren<{ patients:
                         </Table>
                     </div>
                 </div>
+                <MapModal open={modalOpen} onClose={() => setModalOpen(false)} endereco={endereco} />
             </PatientLayout>
         </AppLayout>
     );

@@ -157,3 +157,12 @@
         @apply bg-background text-foreground;
     }
 }
+
+[data-radix-dialog-content] {
+  transform: none !important; /* Corrige bug de posicionamento */
+}
+
+.h-map-container {
+  min-height: 500px;
+  background: #f0f0f0;
+}

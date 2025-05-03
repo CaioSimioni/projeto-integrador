@@ -16,6 +16,9 @@ Route::middleware(['auth'])->group(function () {
     // Exibe os exames de um paciente
     Route::get('/patients/{patient}/exams', [PatientController::class, 'exams'])->name('patients.exams');
 
+    // Editar os dados de um paciente
+    Route::get('/patients/{patient}/edit', [PatientController::class, 'edit'])->name('patients.edit');
+
     // Salva um novo paciente
     Route::post('/patients', [PatientController::class, 'store'])->name('patients.store');
 

@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { CalendarDays, NotepadText, Shield, UserRound, Wallpaper, Warehouse } from 'lucide-react';
+import { CalendarDays, NotepadText, Shield, UserRound, Wallpaper, /* Warehouse */ } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -43,11 +43,11 @@ const mainNavItems: NavItem[] = [
         href: '',
         icon: ReceiptText,
     }, */
-    {
+    /* {
         title: 'Inventário & Farmácia',
         href: '/inventory',
         icon: Warehouse,
-    },
+    }, */
     /* {
         title: 'Exames & Testes Laboratoriais',
         href: '',

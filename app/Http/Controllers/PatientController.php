@@ -35,6 +35,13 @@ class PatientController extends Controller
         ]);
     }
 
+    public function edit(Patient $patient)
+    {
+        return inertia('patients/patients-update', [
+            'patient' => $patient,
+        ]);
+    }
+
     public function store(StorePatientRequest $request)
     {
         try {
@@ -75,7 +82,10 @@ class PatientController extends Controller
     {
         $patient->update($request->validated());
 
-        return redirect()->route('patients.index')->with('success', 'Paciente atualizado com sucesso!');
+        // Redirecionar de volta para a página de edição com o ID
+        return redirect()
+            ->route('patients.edit', ['patient' => $patient->id])
+            ->with('success', 'Paciente atualizado com sucesso!');
     }
 
     public function destroy(Patient $patient)

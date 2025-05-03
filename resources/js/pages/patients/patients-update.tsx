@@ -1,5 +1,3 @@
-/* Jamais mexer nesse código LOL */
-
 import Heading from '@/components/heading';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
@@ -10,12 +8,12 @@ import { Separator } from '@/components/ui/separator';
 import { Toast, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/toaster';
 import AppLayout from '@/layouts/app-layout';
 import PatientLayout from '@/layouts/patients-layout';
-import { BreadcrumbItem } from '@/types';
+import { BreadcrumbItem, Patient } from '@/types';
 import { Transition } from '@headlessui/react';
 import { Head, router, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 
-const breadcrumbs: BreadcrumbItem[] = [{ title: 'Adicionar Paciente', href: '/patients/create' }];
+const breadcrumbs: BreadcrumbItem[] = [{ title: 'Editar Paciente', href: '#' }];
 
 interface ProfileForm {
     fullName: string;
@@ -38,7 +36,7 @@ interface ProfileForm {
     state_address: string;
     country: string;
     phone: string;
-    [key: string]: string | undefined; // Added index signature
+    [key: string]: string | undefined;
 }
 
 interface FormFieldProps {
@@ -111,36 +109,65 @@ function SelectField({ id, label, value, onValueChange, options, placeholder, er
     );
 }
 
-export default function PatientCreate() {
+const formatCPF = (value: string) => {
+    const numericValue = value.replace(/\D/g, '').slice(0, 11);
+    return {
+        raw: numericValue,
+        formatted: numericValue
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{1,2})/, '$1-$2'),
+    };
+};
+
+const formatSUSNumber = (value: string) => {
+    const numericValue = value.replace(/\D/g, '').slice(0, 15);
+    return {
+        raw: numericValue,
+        formatted: numericValue
+            .replace(/(\d{3})(\d)/, '$1 $2')
+            .replace(/(\d{4})(\d)/, '$1 $2')
+            .replace(/(\d{4})(\d)/, '$1 $2'),
+    };
+};
+
+const formatPhone = (value: string) => {
+    const numericValue = value.replace(/\D/g, '').slice(0, 11);
+    return numericValue.replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+};
+
+export default function PatientsUpdate({ patient }: { patient: Patient }) {
     const [isFetchingCEP, setIsFetchingCEP] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
-    const [rawCpf, setRawCpf] = useState('');
-    const [rawSusNumber, setRawSusNumber] = useState('');
+    const [rawCpf] = useState(patient.cpf || '');
+    const [rawSusNumber] = useState(patient.sus_number || '');
     const [toastVisible, setToastVisible] = useState(false);
     const [toastType, setToastType] = useState<'success' | 'error'>('success');
 
-    const { data, setData, errors, processing, recentlySuccessful } = useForm<ProfileForm>({
-        fullName: '',
-        cpf: '',
-        birthDate: '',
-        gender: '',
-        motherName: '',
-        fatherName: '',
-        susNumber: '',
-        medicalRecord: '',
-        nationality: 'Brasileiro',
-        birthPlace: '',
-        state: '',
-        cep: '',
-        address: '',
-        number: '',
-        complement: '',
-        neighborhood: '',
-        city: '',
-        state_address: '',
-        country: 'Brasil',
-        phone: '',
-    });
+    const initialData = {
+        fullName: patient.full_name || '',
+        cpf: patient.cpf ? formatCPF(patient.cpf).formatted : '',
+        birthDate: patient.birth_date ? new Date(patient.birth_date).toISOString().split('T')[0] : '',
+        gender: patient.gender || '',
+        motherName: patient.mother_name || '',
+        fatherName: patient.father_name || '',
+        susNumber: patient.sus_number ? formatSUSNumber(patient.sus_number).formatted : '',
+        medicalRecord: patient.medical_record || '',
+        nationality: patient.nationality || 'Brasileiro',
+        birthPlace: patient.birth_place || '',
+        state: patient.state || '',
+        cep: patient.cep || '',
+        address: patient.address || '',
+        number: patient.number || '',
+        complement: patient.complement || '',
+        neighborhood: patient.neighborhood || '',
+        city: patient.city || '',
+        state_address: patient.state_address || '',
+        country: patient.country || 'Brasil',
+        phone: patient.phone ? formatPhone(patient.phone) : '',
+    };
+
+    const { data, setData, errors, processing, recentlySuccessful } = useForm<ProfileForm>(initialData);
 
     const fetchAddressByCEP = async (cep: string) => {
         try {
@@ -168,40 +195,17 @@ export default function PatientCreate() {
         }
     };
 
-    const formatCPF = (value: string) => {
-        const numericValue = value.replace(/\D/g, '').slice(0, 11);
-        setRawCpf(numericValue);
-        return numericValue
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d)/, '$1.$2')
-            .replace(/(\d{3})(\d{1,2})/, '$1-$2');
-    };
-
-    const formatSUSNumber = (value: string) => {
-        const numericValue = value.replace(/\D/g, '').slice(0, 15);
-        setRawSusNumber(numericValue);
-        return numericValue
-            .replace(/(\d{3})(\d)/, '$1 $2')
-            .replace(/(\d{4})(\d)/, '$1 $2')
-            .replace(/(\d{4})(\d)/, '$1 $2');
-    };
-
-    const formatPhone = (value: string) => {
-        const numericValue = value.replace(/\D/g, '').slice(0, 11);
-        return numericValue.replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
-    };
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         const updateField = (newValue: string) => setData((prev) => ({ ...prev, [id]: newValue }));
 
         switch (id) {
             case 'cpf':
-                updateField(formatCPF(value));
+                updateField(formatCPF(value).formatted);
                 break;
 
             case 'susNumber':
-                updateField(formatSUSNumber(value));
+                updateField(formatSUSNumber(value).formatted);
                 break;
 
             case 'phone':
@@ -250,18 +254,18 @@ export default function PatientCreate() {
     return (
         <ToastProvider>
             <AppLayout breadcrumbs={breadcrumbs}>
-                <Head title="Criar Paciente" />
+                <Head title="Editar Paciente" />
                 <PatientLayout>
                     {toastVisible && (
                         <Toast className={toastType === 'success' ? 'bg-green-500' : 'bg-red-500'} onOpenChange={setToastVisible} open={toastVisible}>
                             <ToastTitle>{toastType === 'success' ? 'Sucesso!' : 'Erro!'}</ToastTitle>
                             <ToastDescription>
-                                {toastType === 'success' ? 'Paciente cadastrado com sucesso!' : 'Ocorreu um erro. Verifique os campos destacados.'}
+                                {toastType === 'success' ? 'Paciente atualizado com sucesso!' : 'Ocorreu um erro. Verifique os campos destacados.'}
                             </ToastDescription>
                         </Toast>
                     )}
 
-                    <Heading title="Cadastro de Pacientes" description="Informe os dados do paciente nos campos abaixo:" />
+                    <Heading title="Editar Paciente" description="Atualize os dados do paciente nos campos abaixo:" />
 
                     <form
                         className="grid grid-cols-3 gap-4"
@@ -271,8 +275,10 @@ export default function PatientCreate() {
 
                             if (!validateForm()) return;
 
-                            router.post(
-                                route('patients.store'),
+                            router.patch(
+                                route('patients.update', {
+                                    patient: patient.id, // Certificar que patient.id existe e é numérico
+                                }),
                                 {
                                     full_name: data.fullName,
                                     cpf: rawCpf,
@@ -299,34 +305,10 @@ export default function PatientCreate() {
                                     onSuccess: () => {
                                         setToastType('success');
                                         setToastVisible(true);
-                                        setData({
-                                            fullName: '',
-                                            cpf: '',
-                                            birthDate: '',
-                                            gender: '',
-                                            motherName: '',
-                                            fatherName: '',
-                                            susNumber: '',
-                                            medicalRecord: '',
-                                            nationality: 'Brasileiro',
-                                            birthPlace: '',
-                                            state: '',
-                                            cep: '',
-                                            address: '',
-                                            number: '',
-                                            complement: '',
-                                            neighborhood: '',
-                                            city: '',
-                                            state_address: '',
-                                            country: 'Brasil',
-                                            phone: '',
-                                        });
-                                        setRawCpf('');
-                                        setRawSusNumber('');
+                                        router.reload({ only: ['patient'] });
                                     },
                                     onError: (errors) => {
                                         setSubmitError(typeof errors === 'string' ? errors : 'Ocorreu um erro. Verifique os campos destacados.');
-
                                         setToastType('error');
                                         setToastVisible(true);
                                     },
@@ -568,7 +550,7 @@ export default function PatientCreate() {
 
                         <div className="col-span-3 mt-6 flex items-center gap-4">
                             <Button type="submit" disabled={processing}>
-                                {processing ? 'Salvando...' : 'Salvar Paciente'}
+                                {processing ? 'Salvando...' : 'Salvar Alterações'}
                             </Button>
                             <Transition
                                 show={recentlySuccessful}
@@ -579,7 +561,7 @@ export default function PatientCreate() {
                                 leaveFrom="opacity-100"
                                 leaveTo="opacity-0"
                             >
-                                <p className="text-sm text-green-600">Paciente cadastrado com sucesso!</p>
+                                <p className="text-sm text-green-600">Paciente atualizado com sucesso!</p>
                             </Transition>
                         </div>
 

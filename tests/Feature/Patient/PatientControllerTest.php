@@ -86,13 +86,14 @@ class PatientControllerTest extends TestCase
         ]);
 
         $updateData = [
-            'full_name' => 'Nome Atualizado', // Note que agora usa snake_case
+            'full_name' => 'Nome Atualizado',
             'cpf' => '98765432109',
         ];
 
         $response = $this->patch(route('patients.update', $patient), $updateData);
 
-        $response->assertRedirect(route('patients.index'))->assertSessionHas('success');
+        $response->assertRedirect(route('patients.edit', ['patient' => $patient->id]))
+                 ->assertSessionHas('success', 'Paciente atualizado com sucesso!');
 
         $this->assertDatabaseHas('patients', [
             'id' => $patient->id,
