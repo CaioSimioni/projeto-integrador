@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class); // Chamar o UserSeeder
         $this->call(PatientSeeder::class); // Chamar o PatientSeeder
-        /* $this->call(AppointmentSeeder::class); // Chamar o AppointmentSeeder */
+        $this->call(AppointmentSeeder::class); // Chamar o AppointmentSeeder
     }
 }

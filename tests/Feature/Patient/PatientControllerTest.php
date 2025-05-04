@@ -111,7 +111,7 @@ class PatientControllerTest extends TestCase
 
         $response = $this->delete(route('patients.destroy', $patient));
 
-        $response->assertRedirect(route('patients.index'))->assertSessionHas('success');
+        $response->assertRedirect(route('patients.list'))->assertSessionHas('success');
 
         $this->assertDatabaseMissing('patients', ['id' => $patient->id]);
     }

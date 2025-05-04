@@ -56,11 +56,11 @@ function FormField({ id, label, value, onChange, error, required = false, type =
         <div className="grid gap-2">
             <div className="flex items-center justify-between">
                 <Label htmlFor={id}>{label}</Label>
-                {maxLength && (
+                {/* maxLength && (
                     <span className="text-muted-foreground text-xs">
                         {value?.replace(/\D/g, '').length || 0}/{maxLength}
                     </span>
-                )}
+                ) */}
             </div>
             <Input
                 id={id}

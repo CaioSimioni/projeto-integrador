@@ -32,6 +32,7 @@ export interface SharedData {
     appointmentsQuantity: number;
     ziggy: Config & { location: string };
     analytics: Analytics;
+    dashboard_infos: dashboard_infos;
     [key: string]: unknown;
 }
 
@@ -118,4 +119,10 @@ export interface Analytics {
         '36-60': number;
         '60+': number;
     };
+}
+
+export interface dashboard_infos {
+    total_patients: number;
+    active_patients: number;
+    inactive_patients: number;
 }
